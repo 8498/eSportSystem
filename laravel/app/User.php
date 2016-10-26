@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Mnabialek\LaravelAuthorize\Contracts\Roleable as RoleableContract;
 
-class User extends Authenticatable
+class User extends Authenticatable implements RoleableContract
 {
+    use \Mnabialek\LaravelAuthorize\Traits\Roleable;
     use Notifiable;
 
     /**

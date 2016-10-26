@@ -40,6 +40,9 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         //
+
+        \Modular::loadRoutes($this->app['router'], 'web'); //part of modular package
+        \Modular::loadRoutes($this->app['router'], 'api'); //part of modular package
     }
 
     /**

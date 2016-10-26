@@ -140,7 +140,8 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        Illuminate\Auth\AuthServiceProvider::class,
+        //Illuminate\Auth\AuthServiceProvider::class, // must exchanged for other package
+
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
@@ -167,7 +168,10 @@ return [
          * Package Service Providers...
          */
 
-        //
+        Mnabialek\LaravelAuthorize\Providers\Auth::class,
+        Mnabialek\LaravelAuthorize\Providers\Authorize::class,
+        Mnabialek\LaravelModular\Providers\ModularServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -226,6 +230,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Modular' => Mnabialek\LaravelModular\Facades\Modular::class,
+        'Charts' => ConsoleTVs\Charts\Charts::class,
     ],
 
 ];
