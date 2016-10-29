@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+const VueGoogleMap = require('vue-google-maps');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -13,6 +14,18 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
+
+/**
+ * 
+ * Configurations for api's
+ * 
+ */
+
+VueGoogleMap.load({ 
+    key: 'AIzaSyAQMMQk4BDTxW3M3bptfJwguIg3kCUiEE0'  
+});
+
+/** ------------------ **/
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
