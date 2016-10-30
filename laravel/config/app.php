@@ -172,6 +172,7 @@ return [
         Mnabialek\LaravelAuthorize\Providers\Authorize::class,
         Mnabialek\LaravelModular\Providers\ModularServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -232,6 +233,8 @@ return [
 
         'Modular' => Mnabialek\LaravelModular\Facades\Modular::class,
         'Charts' => ConsoleTVs\Charts\Charts::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

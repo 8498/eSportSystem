@@ -15,11 +15,15 @@
         
     </head>
     <body>
-        <div id="app" class="content">
+        <div class="content">
         @include('layouts.navs.main-nav')
         
         @yield('content')
         
+        @include('layouts.partials.footer')
+
+        @include('modals.login-modal')
+
         </div>
         <!-- Scripts -->
         <script src="/js/app.js"></script>

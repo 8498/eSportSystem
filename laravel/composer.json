@@ -10,7 +10,7 @@
         "mnabialek/laravel-authorize": "^1.1",
         "mnabialek/laravel-modular": "0.2.*",
         "barryvdh/laravel-debugbar": "^2.3",
-        "consoletvs/charts": "^2.0"
+        "consoletvs/charts": "^2.0",
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

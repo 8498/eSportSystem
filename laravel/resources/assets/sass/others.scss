@@ -1,3 +1,6 @@
 .jumbotron {
+    &:hover {
+        opacity: 0.9;
+    }
     background: url('/images/jumbtlo.jpg')
 }

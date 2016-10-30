@@ -6,6 +6,8 @@
  */
 
 require('./bootstrap');
+
+// Vue-google-maps
 const VueGoogleMap = require('vue-google-maps');
 
 /**
