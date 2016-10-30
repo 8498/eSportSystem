@@ -28,4 +28,13 @@ class User extends Authenticatable implements RoleableContract
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /* << relationships */
+
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+
+    /* >> relationships */
 }

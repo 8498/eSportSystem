@@ -16,7 +16,10 @@
     </head>
     <body>
         <div id="app" class="content">
+        @include('layouts.navs.main-nav')
+        
         @yield('content')
+        
         </div>
         <!-- Scripts -->
         <script src="/js/app.js"></script>

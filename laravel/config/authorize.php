@@ -30,7 +30,6 @@ return [
          * name of group in your Policy class . controller method name
          */
         'available' => [
-            'sample.store',
             // you can remove this - this is only sample permission
         ],
 
@@ -59,7 +58,6 @@ return [
              */
             'user' => [
                 // you can remove this - this is only sample permission
-                'sample.store',
             ],
         ],
     ],
