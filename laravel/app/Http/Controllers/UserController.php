@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Http\Requests\UserRequest;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -14,7 +14,7 @@ class UserController extends Controller
         $this->user = $user;
     }
 
-    public function authenticate(Request $request)
+    public function authenticate(UserRequest $request)
     {
         $email = $request->email;
         $password = $request->password;
@@ -23,6 +23,7 @@ class UserController extends Controller
         {
             return redirect()->intended('account\dashboard');
         }
+        return redirect()->route('welcome');
     }
 
     public function logout()
