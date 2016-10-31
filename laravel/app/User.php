@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role'
     ];
 
     /**
@@ -31,4 +31,8 @@ class User extends Authenticatable
 
     /* >> relationships */
 
+    public function getAll()
+    {
+        return $this::paginate(10);
+    }
 }

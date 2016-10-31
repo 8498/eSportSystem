@@ -19,7 +19,7 @@ Route::get('/about', ['as' => 'about', function() {
     return view('about');
 }]);
 
-Route::post('/login', ['as' => 'login', 'uses' => 'UserController@authenticate']);
+Route::post('/login', ['as' => 'login', 'uses' => 'UserController@login']);
 Route::get('/logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
 
 Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
@@ -27,4 +27,9 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
     Route::get('/dashboard', ['as' => 'dashboard', function() {
         return view('dashboard');
     }]);
+
+    Route::group(['prefix' => 'users'], function() {
+        Route::get('/', ['as' => 'users.view', 'uses' => 'UserController@view']);
+    });
+
 });

@@ -2,24 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Facades\UserManager;
 use App\Http\Requests\UserRequest;
-
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function __construct(User $user)
+    public function __construct(UserManager $userManager)
     {
-        $this->user = $user;
+        $this->userManager = $userManager;
     }
 
-    public function authenticate(UserRequest $request)
+    public function view()
     {
-        $email = $request->email;
-        $password = $request->password;
-        
-        if(Auth::attempt(['email' => $email, 'password' => $password]))
+        $vars = $this->userManager->getAll();
+
+        return view('users.index')->with('vars', $vars);
+    }
+
+    public function login(UserRequest $request)
+    {
+        if($this->userManager->authenticate($request->all()))
         {
             return redirect()->intended('account\dashboard');
         }
@@ -28,7 +30,9 @@ class UserController extends Controller
 
     public function logout()
     {
-        Auth::logout();
-        return redirect()->route('welcome');
+        if($this->userManager->logout())
+        {
+            return redirect()->route('welcome');
+        }
     }
 }

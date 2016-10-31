@@ -14,6 +14,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
+                    <li><a href="{{ route('users.view') }}">{{ ('Użytkownicy') }}</a></li>
                     <li><a href="{{ route('logout') }}">{{ ('Wyloguj') }}</a></li>
                 @else
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">{{ ('Logowanie') }}</a></li>
