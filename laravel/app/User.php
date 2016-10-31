@@ -4,11 +4,9 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Mnabialek\LaravelAuthorize\Contracts\Roleable as RoleableContract;
 
-class User extends Authenticatable implements RoleableContract
+class User extends Authenticatable
 {
-    use \Mnabialek\LaravelAuthorize\Traits\Roleable;
     use Notifiable;
 
     /**
@@ -31,10 +29,6 @@ class User extends Authenticatable implements RoleableContract
 
     /* << relationships */
 
-    public function role()
-    {
-        return $this->belongsTo('App\Role');
-    }
-
     /* >> relationships */
+
 }

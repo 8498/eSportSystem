@@ -6,7 +6,8 @@
                 <h4 class="modal-title">{{ ('Logowanie') }}</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal">
+                <form method="post" action="{{ route('login') }}" class="form-horizontal">
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
                             <input name="email" type="email" class="form-control" placeholder="Podaj email">

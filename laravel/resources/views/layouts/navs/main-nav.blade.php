@@ -13,8 +13,12 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" data-toggle="modal" data-target="#login-modal">{{ ('Logowanie') }}</a></li>
-            </ul>
+                @if(Auth::check())
+                    <li><a href="{{ route('logout') }}">{{ ('Wyloguj') }}</a></li>
+                @else
+                    <li><a href="#" data-toggle="modal" data-target="#login-modal">{{ ('Logowanie') }}</a></li>
+                </ul>
+                @endif
         </div>
     </div>
 </nav>

@@ -18,3 +18,13 @@ Route::get('/', ['as' => 'welcome', function () {
 Route::get('/about', ['as' => 'about', function() {
     return view('about');
 }]);
+
+Route::post('/login', ['as' => 'login', 'uses' => 'UserController@authenticate']);
+Route::get('/logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
+
+Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
+    
+    Route::get('/dashboard', ['as' => 'dashboard', function() {
+        return view('dashboard');
+    }]);
+});
