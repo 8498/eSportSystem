@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Facades\UserManager;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserLoginRequest;
+use App\Http\Requests\ChangeEmailRequest;
+use App\Http\Requests\ChangePasswordRequest;
 
 class UserController extends Controller
 {
@@ -19,13 +21,27 @@ class UserController extends Controller
         return view('users.index')->with('vars', $vars);
     }
 
-    public function login(UserRequest $request)
+    public function login(UserLoginRequest $request)
     {
         if($this->userManager->authenticate($request->all()))
         {
             return redirect()->intended('account\dashboard');
         }
         return redirect()->route('welcome');
+    }
+
+    public function changeEmail(ChangeEmailRequest $request)
+    {
+        $this->userManager->changeEmail($request->email);
+
+        return redirect()->route('settings');
+    }
+
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        $this->userManager->changePassword($request->password);
+        
+        return redirect()->route('settings');
     }
 
     public function logout()

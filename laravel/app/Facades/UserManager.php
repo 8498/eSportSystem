@@ -30,6 +30,18 @@ class UserManager
         return false;
     }
 
+    public function changeEmail($email)
+    {
+        $user = $this->user->getById(Auth::user()->id);
+        $user->update(['email' => $email]);
+    }
+
+    public function changePassword($password)
+    {
+        $user = $this->user->getById(Auth::user()->id);
+        $user->update(['password' => bcrypt($password)]);
+    }
+
     public function logout()
     {
         Auth::logout();

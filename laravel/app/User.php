@@ -31,6 +31,11 @@ class User extends Authenticatable
 
     /* >> relationships */
 
+    public function getById($id)
+    {
+        return $this::find($id);
+    }
+
     public function getAll()
     {
         return $this::paginate(10);

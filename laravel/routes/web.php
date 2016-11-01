@@ -22,14 +22,27 @@ Route::get('/about', ['as' => 'about', function() {
 Route::post('/login', ['as' => 'login', 'uses' => 'UserController@login']);
 Route::get('/logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
 
+/* Account */
 Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
     
     Route::get('/dashboard', ['as' => 'dashboard', function() {
         return view('dashboard');
     }]);
 
+    /* Settings */
+    Route::group(['prefix' => 'settings'], function() {
+        
+        Route::get('/', ['as' => 'settings', function() {
+            return view('account.settings.index');
+        }]);
+
+        Route::post('/change-email', ['as' => 'change-email', 'uses' => 'UserController@changeEmail']);
+        Route::post('/change-password', ['as' => 'change-password', 'uses' => 'UserController@changePassword']);
+
+    });
+    /* Users */
     Route::group(['prefix' => 'users'], function() {
         Route::get('/', ['as' => 'users.view', 'uses' => 'UserController@view']);
     });
-
+    
 });
