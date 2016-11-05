@@ -34,7 +34,7 @@
                 </tbody>
             </table>
             {{ $vars->links() }}
-            <a class="btn btn-success" href="#">Dodaj</a>
+            <a class="btn btn-success" href="#" data-toggle="modal" data-target="#create-user-modal">Dodaj</a>
         </div>
     </section>
 @endsection

@@ -22,7 +22,9 @@
         
         @include('layouts.partials.footer')
 
+        <!-- modals -->
         @include('modals.login-modal')
+        @include('modals.create-user-modal')
 
         </div>
         <!-- Scripts -->
