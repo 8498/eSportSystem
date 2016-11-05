@@ -29,6 +29,11 @@ class User extends Authenticatable
 
     /* << relationships */
 
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+
     /* >> relationships */
 
     public function getById($id)
@@ -39,5 +44,14 @@ class User extends Authenticatable
     public function getAll()
     {
         return $this::paginate(10);
+    }
+
+    public function hasRole($rolename)
+    {
+        if($this::role()->getResults()->name === $rolename)
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -169,6 +169,7 @@ return [
 
         Mnabialek\LaravelModular\Providers\ModularServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,6 +230,7 @@ return [
 
         'Modular' => Mnabialek\LaravelModular\Facades\Modular::class,
         'Charts' => ConsoleTVs\Charts\Charts::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

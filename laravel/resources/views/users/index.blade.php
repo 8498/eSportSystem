@@ -17,13 +17,13 @@
                 <tr class="info">
                     <td>{{ $var->name }}</td>
                     <td>{{ $var->email }}</td>
-                    <td>{{ $var->role }}</td>
+                    <td>{{ $var->role->name }}</td>
                 </tr>
                 @else
                 <tr>
                     <td>{{ $var->name }}</td>
                     <td>{{ $var->email }}</td>
-                    <td>{{ $var->role }}</td>
+                    <td>{{ $var->role->name }}</td>
                     <td>
                         <a class="btn btn-primary" href="#">Edytuj</a>
                         <a class="btn btn-danger" href="#">Usun</a>

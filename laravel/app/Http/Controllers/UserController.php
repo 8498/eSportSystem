@@ -7,6 +7,8 @@ use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\ChangeEmailRequest;
 use App\Http\Requests\ChangePasswordRequest;
 
+use App\Role;
+
 class UserController extends Controller
 {
     public function __construct(UserManager $userManager)

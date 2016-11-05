@@ -11,11 +11,18 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $name = 'admin';
+        $email = 'admin@admin.com';
+        $password = 'topsecret';
+        $rolename = 'superadmin';
+
+        $role = DB::table('roles')->where('name', $rolename)->first();
+
         DB::table('users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
-            'password' => bcrypt('topsecret'),
-            'role' => 'admin',
+            'name' => $name,
+            'email' => $email,
+            'password' => bcrypt($password),
+            'role_id' => $role->id,
         ]);
     }
 }
