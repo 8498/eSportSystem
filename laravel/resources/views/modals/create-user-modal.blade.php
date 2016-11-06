@@ -6,8 +6,13 @@
                 <h4 class="modal-title">{{ ('Stwórz użytkownika') }}</h4>
             </div>
             <div class="modal-body">
-                <form method="post" action="" class="form-horizontal">
+                <form method="post" action="{{ route('users.create') }}" class="form-horizontal">
                     {{ csrf_field() }}
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <input name="name" type="text" class="form-control" placeholder="Podaj nazwe">
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
                             <input name="email" type="email" class="form-control" placeholder="Podaj email">
@@ -19,8 +24,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div id="select" class="col-sm-8 col-sm-offset-2">
-                            <options></options>
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <select id="select-roles" name="role" class="form-control"></select>
                         </div>
                     </div>
                     <div class="form-group text-center">
@@ -31,3 +36,4 @@
         </div>
     </div>
 </div>
+

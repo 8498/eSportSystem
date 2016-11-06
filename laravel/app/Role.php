@@ -31,9 +31,14 @@ class Role extends Model
         return $this::find($id);
     }
 
-    public function getAll()
+    public function getPaginateAll()
     {
         return $this::paginate(10);
+    }
+
+    public function getAll()
+    {
+        return $this::all();
     }
 
 }

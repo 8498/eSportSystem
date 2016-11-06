@@ -13,11 +13,13 @@
                 </thead>
                 <tbody>
                 @foreach ($vars as $var)
-                @if(Auth::user()->id = $var->id)
+                @if(Auth::user()->id == $var->id)
                 <tr class="info">
                     <td>{{ $var->name }}</td>
                     <td>{{ $var->email }}</td>
                     <td>{{ $var->role->name }}</td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 @else
                 <tr>
@@ -26,6 +28,8 @@
                     <td>{{ $var->role->name }}</td>
                     <td>
                         <a class="btn btn-primary" href="#">Edytuj</a>
+                    </td>
+                    <td>
                         <a class="btn btn-danger" href="#">Usun</a>
                     </td>
                 </tr>

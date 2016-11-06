@@ -13,9 +13,14 @@ class UserManager
         $this->user = $user;
     }
 
-    public function getAll()
+    public function getPaginateAll()
     {
-        return $this->user->getAll();
+        return $this->user->getPaginateAll();
+    }
+
+    public function create($array)
+    {
+        return $this->user->store($array);
     }
 
     public function authenticate($array)

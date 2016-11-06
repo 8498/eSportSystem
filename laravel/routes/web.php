@@ -15,6 +15,9 @@ Route::get('/', ['as' => 'welcome', function () {
     return view('welcome');
 }]);
 
+//Ajax
+Route::get('/getroles', ['uses' => 'RoleController@ajaxGetAll']);
+
 Route::get('/about', ['as' => 'about', function() {
     return view('about');
 }]);
@@ -43,6 +46,7 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
     /* Users */
     Route::group(['prefix' => 'users'], function() {
         Route::get('/', ['as' => 'users.view', 'uses' => 'UserController@view']);
+        Route::post('/create', ['as' => 'users.create', 'uses' => 'UserController@create']);
     });
     
 });

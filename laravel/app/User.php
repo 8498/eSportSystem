@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role'
+        'name', 'email', 'password'
     ];
 
     /**
@@ -36,12 +36,25 @@ class User extends Authenticatable
 
     /* >> relationships */
 
+    public function store($array)
+    {
+        $user = new $this();
+
+        $user->name = $array['name'];
+        $user->email = $array['email'];
+        $user->password = bcrypt($array['password']);
+        $user->role_id = $array['role'];
+        $user->save();
+
+        return true;
+    }
+
     public function getById($id)
     {
         return $this::find($id);
     }
 
-    public function getAll()
+    public function getPaginateAll()
     {
         return $this::paginate(10);
     }
