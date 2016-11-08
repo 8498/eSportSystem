@@ -15,10 +15,13 @@ require('laravel-elixir-vue-2');
 
 elixir(mix => {
     mix.sass('app.scss')
+       .scripts([
+           'general/'
+       ],'resources/assets/js/general.js')
        .webpack([
            'app.js',
            'config.js',
-           'ajax/'
+           'general.js'
            ],'public/js/app.js')
        .copy('resources/assets/images/','public/images/');
 });
