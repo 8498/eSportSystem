@@ -27,10 +27,10 @@
                     <td>{{ $var->email }}</td>
                     <td>{{ $var->role->name }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{ URL::route('users.edit', [$var->id]) }}">Edytuj</a>
+                        <a class="btn btn-primary" href="{{ route('users.edit', [$var->id]) }}">Edytuj</a>
                     </td>
                     <td>
-                        <a class="btn btn-danger" href="#">Usun</a>
+                        <a class="btn btn-danger" href="{{ route('users.delete', [$var->id]) }}">Usun</a>
                     </td>
                 </tr>
                 @endif

@@ -61,6 +61,15 @@ class User extends Authenticatable
         return true;
     }
 
+    public function del($id)
+    {
+        $user = $this->getById($id);
+
+        $user->delete();
+
+        return true;
+    }
+
     public function getById($id)
     {
         return $this::find($id);

@@ -46,6 +46,14 @@ class UserController extends Controller
         }
     }
 
+    public function delete($id)
+    {
+        if($this->userManager->delete($id))
+        {
+            return redirect()->route('users.view');
+        }
+    }
+
     public function login(UserLoginRequest $request)
     {
         if($this->userManager->authenticate($request->all()))

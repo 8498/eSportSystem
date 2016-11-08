@@ -33,6 +33,11 @@ class UserManager
         return $this->user->edit($array);
     }
 
+    public function delete($id)
+    {
+        return $this->user->del($id);
+    }
+
     public function authenticate($array)
     {
         $email = $array['email'];
