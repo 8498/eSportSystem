@@ -13,6 +13,11 @@ class UserManager
         $this->user = $user;
     }
 
+    public function getById($id)
+    {
+        return $this->user->getById($id);    
+    }
+
     public function getPaginateAll()
     {
         return $this->user->getPaginateAll();
@@ -21,6 +26,11 @@ class UserManager
     public function create($array)
     {
         return $this->user->store($array);
+    }
+
+    public function update($array)
+    {
+        return $this->user->edit($array);
     }
 
     public function authenticate($array)

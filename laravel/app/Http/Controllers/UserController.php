@@ -6,6 +6,7 @@ use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\ChangeEmailRequest;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserEditRequest;
 
 use App\Facades\UserManager;
 
@@ -28,6 +29,20 @@ class UserController extends Controller
         if($this->userManager->create($request->all()))
         {
             return redirect()->back();
+        }
+    }
+
+    public function edit($id)
+    {
+        $vars = $this->userManager->getById($id);
+        return view('users.edit')->with('vars', $vars);
+    }
+
+    public function update(UserEditRequest $request)
+    {
+        if($this->userManager->update($request->all()))
+        {
+            return redirect()->route('users.view');
         }
     }
 

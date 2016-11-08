@@ -49,6 +49,18 @@ class User extends Authenticatable
         return true;
     }
 
+    public function edit($array)
+    {
+        $user = $this->getById($array['id']);
+
+        $user->update([
+            'name' => $array['name'],
+            'email' => $array['email']
+        ]);
+
+        return true;
+    }
+
     public function getById($id)
     {
         return $this::find($id);
