@@ -44,7 +44,7 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
 
     });
     /* Users */
-    Route::group(['prefix' => 'users'], function() {
+    Route::group(['prefix' => 'users', 'middleware' => ['role:superadmin']], function() {
         Route::get('/', ['as' => 'users.view', 'uses' => 'UserController@view']);
         Route::get('/edit/{id}', ['as' => 'users.edit', 'uses' => 'UserController@edit']);
         

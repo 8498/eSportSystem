@@ -1,0 +1,1 @@
+<li><a href="{{ route('users.view') }}">{{ ('Użytkownicy') }}</a></li>
