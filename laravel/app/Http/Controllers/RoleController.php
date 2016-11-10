@@ -14,6 +14,6 @@ class RoleController extends Controller
 
     public function ajaxGetAll()
     {
-        return $this->roleManager->ajaxGetAll();
+        return $this->roleManager->getAll();
     }
 }

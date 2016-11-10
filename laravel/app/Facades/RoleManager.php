@@ -13,7 +13,7 @@ class RoleManager
         $this->role = $role;
     }
 
-    public function ajaxGetAll()
+    public function getAll()
     {
         $roles = $this->role->getAll();
         if(Request::ajax())
