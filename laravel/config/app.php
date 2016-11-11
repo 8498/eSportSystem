@@ -167,6 +167,7 @@ return [
          * Package Service Providers...
          */
 
+        Caffeinated\Modules\ModulesServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
@@ -227,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Module' => Caffeinated\Modules\Facades\Module::class,
         'Charts' => ConsoleTVs\Charts\Charts::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],

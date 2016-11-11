@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "11a8d50cf5412958f1e41cd282cf6a15",
-    "content-hash": "a5deca799e28932826910c30076f81cd",
+    "hash": "050e2fc4d6bf033c407d0a04ac1c53ee",
+    "content-hash": "66b1448d9afd3d2da2fcf923e3209848",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -60,6 +60,60 @@
                 "webprofiler"
             ],
             "time": "2016-09-15 14:05:56"
+        },
+        {
+            "name": "caffeinated/modules",
+            "version": "v4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caffeinated/modules.git",
+                "reference": "4005675dafbd68ffd97d97d3057734670177fc22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caffeinated/modules/zipball/4005675dafbd68ffd97d97d3057734670177fc22",
+                "reference": "4005675dafbd68ffd97d97d3057734670177fc22",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "5.3.*",
+                "illuminate/database": "5.3.*",
+                "illuminate/filesystem": "5.3.*",
+                "illuminate/routing": "5.3.*",
+                "illuminate/support": "5.3.*",
+                "php": ">=5.6.4"
+            },
+            "suggest": {
+                "wikimedia/composer-merge-plugin": "Allows the ability to create and merge composer.json files for your individual modules for module-specific dependency management."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Caffeinated\\Modules\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shea Lewis",
+                    "email": "shea.lewis89@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 Modules",
+            "keywords": [
+                "caffeinated",
+                "laravel",
+                "modules"
+            ],
+            "time": "2016-11-08 03:46:11"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -710,48 +764,6 @@
                 "debugbar"
             ],
             "time": "2016-09-15 14:01:59"
-        },
-        {
-            "name": "mnabialek/laravel-modular",
-            "version": "v0.2.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mnabialek/laravel-modular.git",
-                "reference": "62a444a0cac41efac1315061ed6ff14d5892976a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mnabialek/laravel-modular/zipball/62a444a0cac41efac1315061ed6ff14d5892976a",
-                "reference": "62a444a0cac41efac1315061ed6ff14d5892976a",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "5.3.*"
-            },
-            "require-dev": {
-                "fzaninotto/faker": "~1.4",
-                "mockery/mockery": "^0.9.5",
-                "phpunit/phpunit": "^5.4",
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Mnabialek\\LaravelModular\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marcin Nabiałek",
-                    "email": "developer@nabialek.org"
-                }
-            ],
-            "description": "Allows creating Laravel modules for better project structure",
-            "time": "2016-10-10 17:56:15"
         },
         {
             "name": "monolog/monolog",
@@ -2251,6 +2263,48 @@
                 "test"
             ],
             "time": "2015-05-11 14:41:42"
+        },
+        {
+            "name": "mnabialek/laravel-modular",
+            "version": "v0.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mnabialek/laravel-modular.git",
+                "reference": "62a444a0cac41efac1315061ed6ff14d5892976a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mnabialek/laravel-modular/zipball/62a444a0cac41efac1315061ed6ff14d5892976a",
+                "reference": "62a444a0cac41efac1315061ed6ff14d5892976a",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.3.*"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "~1.4",
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "^5.4",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mnabialek\\LaravelModular\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcin Nabiałek",
+                    "email": "developer@nabialek.org"
+                }
+            ],
+            "description": "Allows creating Laravel modules for better project structure",
+            "time": "2016-10-10 17:56:15"
         },
         {
             "name": "mockery/mockery",
