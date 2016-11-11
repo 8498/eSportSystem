@@ -167,7 +167,6 @@ return [
          * Package Service Providers...
          */
 
-        Mnabialek\LaravelModular\Providers\ModularServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
@@ -228,7 +227,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Modular' => Mnabialek\LaravelModular\Facades\Modular::class,
         'Charts' => ConsoleTVs\Charts\Charts::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
