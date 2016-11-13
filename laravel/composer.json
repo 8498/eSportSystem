@@ -9,7 +9,8 @@
         "laravel/framework": "5.3.*",
         "barryvdh/laravel-debugbar": "^2.3",
         "consoletvs/charts": "^2.0",
-        "caffeinated/modules": "^4.1"
+        "caffeinated/modules": "^4.1",
+        "barryvdh/laravel-ide-helper": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
