@@ -21,7 +21,7 @@ class MailController extends Controller
     {
 
         if ($this->mailManager->resetPasswordEmail($id)) {
-            return view('welcome');
+            return redirect()->route('welcome');
         }
     }
 }

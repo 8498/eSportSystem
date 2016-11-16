@@ -11,16 +11,12 @@
 |
 */
 
-Route::get('/', ['as' => 'welcome', function () {
-    return view('welcome');
-}]);
+Route::get('/', ['as' => 'welcome', 'uses' => 'PageController@welcome']);
 
 //Ajax
 Route::get('/getroles', ['uses' => 'RoleController@ajaxGetAll']);
 
-Route::get('/about', ['as' => 'about', function() {
-    return view('about');
-}]);
+Route::get('/about', ['as' => 'about', 'uses' => 'PageController@about']);
 
 Route::post('/login', ['as' => 'login', 'uses' => 'UserController@login']);
 Route::get('/logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
@@ -28,16 +24,12 @@ Route::get('/logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
 /* Account */
 Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
     
-    Route::get('/dashboard', ['as' => 'dashboard', function() {
-        return view('dashboard');
-    }]);
+    Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'UserController@dashboard']);
 
     /* Settings */
     Route::group(['prefix' => 'settings'], function() {
         
-        Route::get('/', ['as' => 'settings', function() {
-            return view('account.settings.index');
-        }]);
+        Route::get('/', ['as' => 'settings', 'uses' => 'UserController@settings']);
 
         Route::post('/change-email', ['as' => 'change-email', 'uses' => 'UserController@changeEmail']);
         Route::post('/change-password', ['as' => 'change-password', 'uses' => 'UserController@changePassword']);

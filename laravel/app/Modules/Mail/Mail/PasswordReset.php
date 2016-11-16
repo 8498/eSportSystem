@@ -21,9 +21,13 @@ class PasswordReset extends Mailable
 
     public function build()
     {
-        $subject = 'Resetowanie hasła.';
+        $subject = 'eSportSystem - Reset hasła.';
 
         return $this->view('mail::passwordreset')
-            ->subject($subject . ' ' . $this->user->name . ' ' . $this->newpassword);
+            ->subject($subject)
+            ->with([
+                'username' => $this->user->name,
+                'newpassword' => $this->newpassword
+            ]);
     }
 }

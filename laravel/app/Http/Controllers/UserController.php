@@ -54,6 +54,16 @@ class UserController extends Controller
         }
     }
 
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
+
+    public function settings()
+    {
+        return view('account.settings.index');
+    }
+
     public function login(UserLoginRequest $request)
     {
         if($this->userManager->authenticate($request->all()))
