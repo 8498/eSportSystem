@@ -12,7 +12,10 @@
 */
 
 Route::group(['prefix' => 'mail'], function() {
+    
     Route::get('/', function() {
         dd('This is the Mail module index page. Build something great!');
     });
+    Route::get('/passwordresetemail',['as' => 'passwordresetemail','uses' => 'MailController@sendResetPasswordEmail']);
+
 });
