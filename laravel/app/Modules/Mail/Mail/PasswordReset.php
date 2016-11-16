@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 use App\User;
 
-class PasswordReset extends Mailable 
+class PasswordReset extends Mailable
 {
      use Queueable, SerializesModels;
 

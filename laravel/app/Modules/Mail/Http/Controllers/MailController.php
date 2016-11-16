@@ -6,17 +6,22 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
 
-use App\Modules\Mail\Mail\PasswordReset;
+use App\Modules\Mail\Facades\MailManager;
 
 class MailController extends Controller
 {
-    public function sendResetPasswordEmail(){
 
-        Mail::to('c36557e833-7a957b@inbox.mailtrap.io')->send(new PasswordReset);
+    public function __construct(MailManager $mailManager)
+    {
+        $this->mailManager = $mailManager;
+    }
 
-        return view('welcome');
+    public function sendResetPasswordEmail()
+    {
 
+        if ($this->mailManager->resetPasswordEmail()) {
+            return view('welcome');
+        }
     }
 }
