@@ -13,9 +13,10 @@ class PasswordReset extends Mailable
 {
      use Queueable, SerializesModels;
 
-    public function __construct()
+    public function __construct(User $user, $newpassword)
     {
-        //
+        $this->user = $user;
+        $this->newpassword = $newpassword;
     }
 
     public function build()
@@ -23,6 +24,6 @@ class PasswordReset extends Mailable
         $subject = 'Resetowanie hasła.';
 
         return $this->view('mail::passwordreset')
-            ->subject($subject);
+            ->subject($subject . ' ' . $this->user->name . ' ' . $this->newpassword);
     }
 }

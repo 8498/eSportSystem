@@ -17,10 +17,10 @@ class MailController extends Controller
         $this->mailManager = $mailManager;
     }
 
-    public function sendResetPasswordEmail()
+    public function sendResetPasswordEmail($id)
     {
 
-        if ($this->mailManager->resetPasswordEmail()) {
+        if ($this->mailManager->resetPasswordEmail($id)) {
             return view('welcome');
         }
     }

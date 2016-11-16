@@ -62,6 +62,16 @@ class UserManager
         $user->update(['password' => bcrypt($password)]);
     }
 
+    public function resetPassword($id)
+    {
+        $password = 'qwerty123';
+
+        $user = $this->user->getById($id);
+        $user->update(['password' => bcrypt($password)]);
+
+        return $password;
+    }
+
     public function logout()
     {
         Auth::logout();
