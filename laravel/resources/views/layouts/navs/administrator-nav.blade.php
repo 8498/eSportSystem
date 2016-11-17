@@ -1,0 +1,1 @@
+<li><a href="{{ route('offices.view') }}">{{ ('Stanowiska') }}</a></li>
