@@ -19,6 +19,7 @@
                             <label for="office_id">Stanowisko</label>
                             <select id="select-offices" name="office" class="form-control"></select>
                         </div>
+                        @include('partials.form-personal-details')
                     </div>
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-default">{{ ('Utwórz') }}</button>

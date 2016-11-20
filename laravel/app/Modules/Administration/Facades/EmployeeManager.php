@@ -3,12 +3,14 @@
 namespace App\Modules\Administration\Facades;
 
 use App\Modules\Administration\Models\Employee;
+use App\PersonalDetail;
 
 class EmployeeManager 
 {
-    public function __construct(Employee $employee)
+    public function __construct(Employee $employee, PersonalDetail $personalDetail)
     {
         $this->employee = $employee;
+        $this->personalDetail = $personalDetail;
     }
 
     public function getById($id)
@@ -24,11 +26,18 @@ class EmployeeManager
     public function create($array)
     {
         return $this->employee->store($array);
+
     }
 
     public function update($array)
     {
-        return $this->employee->edit($array);
+        if($this->employee->edit($array))
+        {
+            if($this->personalDetail->edit($array))
+            {
+                return true;
+            }
+        }
     }
 
     public function delete($id)

@@ -18,6 +18,11 @@ class Employee extends Model
 
     /* << relationships */
 
+    public function personalDetail()
+    {
+        return $this->hasOne('App\PersonalDetail', 'id', 'personal_detail_id');
+    }
+
     public function office()
     {
         return $this->belongsTo('App\Modules\Administration\Models\Office');
@@ -27,7 +32,11 @@ class Employee extends Model
 
     public function getById($id)
     {
-        return $this::find($id);
+        $employee = $this::find($id);
+
+        $personalDetail = $this::find($id)->personalDetail()->first();
+
+        return $array = ['employee' => $employee, 'personalDetail' => $personalDetail];
     }
 
     public function getPaginateAll()
@@ -39,9 +48,16 @@ class Employee extends Model
     {
         $employee = new $this();
 
+        $personalDetail = $employee->personalDetail()->create([
+            'age' => $array['age'],
+            'phone_number' => $array['phone_number'],
+            'card_number' => $array['card_number']
+        ]);
+
         $employee->firstname = $array['firstname'];
         $employee->lastname = $array['lastname'];
         $employee->office_id = $array['office'];
+        $employee->personal_detail_id = $personalDetail->id;
         $employee->save();
 
         return true;
@@ -49,7 +65,7 @@ class Employee extends Model
 
     public function edit($array)
     {
-        $employee = $this->getById($array['id']);
+        $employee = $this::find($array['id']);
 
         $employee->update([
             'firstname' => $array['firstname'],

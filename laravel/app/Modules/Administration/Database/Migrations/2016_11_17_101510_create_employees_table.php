@@ -18,6 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->integer('office_id');
+            $table->integer('personal_detail_id');
             $table->timestamps();
             
         });
@@ -30,6 +31,6 @@ class CreateEmployeesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('employees');
     }
 }

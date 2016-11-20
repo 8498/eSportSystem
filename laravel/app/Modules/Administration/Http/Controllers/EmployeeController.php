@@ -26,6 +26,7 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $vars = $this->employeeManager->getById($id);
+        //dd($vars);
         return view('administration::employees.show')->with('vars', $vars);
     }
 
