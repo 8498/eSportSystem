@@ -1,5 +1,6 @@
 var optionTypes = {
-    ROLE : 'roles'
+    ROLE : 'roles',
+    OFFICE : 'offices'
 };
 
 function Option(optionType) { 

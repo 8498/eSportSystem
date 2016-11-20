@@ -30,6 +30,11 @@ class Office extends Model
         return $this::find($id);
     }
 
+    public function getAll()
+    {
+        return $this::all();
+    }
+
     public function getPaginateAll()
     {
         return $this::paginate(10);

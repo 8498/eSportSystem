@@ -2,6 +2,9 @@
 
 namespace App\Modules\Administration\Facades;
 
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Response;
+
 use App\Modules\Administration\Models\Office;
 
 class OfficeManager 
@@ -19,6 +22,16 @@ class OfficeManager
     public function getPaginateAll()
     {
         return $this->office->getPaginateAll();
+    }
+
+    public function getAll()
+    {
+        $offices = $this->office->getAll();
+        if(Request::ajax())
+        {
+            return Response::json($offices);
+        }
+        return $offices;
     }
 
     public function create($array)

@@ -53,4 +53,9 @@ class OfficeController extends Controller
         }
     }
 
+    public function ajaxGetAll()
+    {
+        return $this->officeManager->getAll();
+    }
+
 }

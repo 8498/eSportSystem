@@ -4,7 +4,7 @@ function Ajax(ajaxMethod, ajaxUrl, datatype){
     this.datatype = datatype;
 };
 
-Ajax.prototype.sendEmptyRequest = function() {
+Ajax.prototype.getRoles = function() {
     $.ajax({
         method: this.ajaxMethod,
         url: this.ajaxUrl,
@@ -18,10 +18,29 @@ Ajax.prototype.sendEmptyRequest = function() {
         }
     });
 };
+
+Ajax.prototype.getOffices = function() {
+    $.ajax({
+        method: this.ajaxMethod,
+        url: this.ajaxUrl,
+        datatype: this.datatype,
+        success: function(result){
+            var option = new Option(optionTypes.OFFICE);
+            option.create(result);
+        },
+        error: function(){
+            console.log('Ajax - error');
+        }
+    });
+}
 var ajax = new Ajax('GET','/getroles','json');
-ajax.sendEmptyRequest();
+ajax.getRoles();
+
+var ajax_2 = new Ajax('GET','/administration/getoffices','json');
+ajax_2.getOffices();
 var optionTypes = {
-    ROLE : 'roles'
+    ROLE : 'roles',
+    OFFICE : 'offices'
 };
 
 function Option(optionType) { 

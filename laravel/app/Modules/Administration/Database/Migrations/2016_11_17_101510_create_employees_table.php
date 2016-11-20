@@ -18,6 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->integer('office_id');
+            $table->timestamps();
             
         });
     }
