@@ -29,7 +29,7 @@ class PersonalDetail extends Model
 
     public function nationality()
     {
-        return $this->hasOne('App\Nationality','id','nationality_id');
+        return $this->belongsTo('App\Nationality');
     }
 
     /* >> relationships */

@@ -19,19 +19,35 @@ class Nationality extends Model
 
     public function personalDetail()
     {
-        return $this->belongsTo('App\PersonalDetail');
+        return $this->hasMany('App\PersonalDetail','nationality_id','id');
     }
 
     /* >> relationships */
 
     public function store($array)
     {
-        $nationality = new $this();
+        $nationalities = $this::all();
 
-        $nationality->nationality_name = $array['nationality_name'];
-        $nationality->save();
+        $found_nationality = null;
 
-        return $nationality;
+        foreach ($nationalities as $nationality) {
+            if ($nationality->nationality_name === $array['nationality_name']) {
+                $found_nationality = $nationality;
+                break;
+            }
+        }
+        if ($found_nationality != null) {
+            $return = $found_nationality;
+        } else {
+            $nationality = new $this();
+
+            $nationality->nationality_name = $array['nationality_name'];
+            $nationality->save();
+
+            $return = $nationality;
+        }
+
+        return $return;
     }
 
     public function edit($array)
