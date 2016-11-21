@@ -20,7 +20,6 @@
                             <select id="select-offices" name="office" class="form-control"></select>
                         </div>
                         @include('partials.form-personal-details')
-                        @include('partials.form-address')
                         <div class="col-sm-8 col-sm-offset-2">
                             <input name="nationality_name" type="text" class="form-control" placeholder="Podaj narodowość">
                         </div>
