@@ -6,15 +6,17 @@ use App\Modules\Administration\Models\Employee;
 use App\PersonalDetail;
 use App\Address;
 use App\Nationality;
+use App\City;
 
 class EmployeeManager 
 {
-    public function __construct(Employee $employee, PersonalDetail $personalDetail, Address $address, Nationality $nationality)
+    public function __construct(Employee $employee, PersonalDetail $personalDetail, Address $address, Nationality $nationality, City $city)
     {
         $this->employee = $employee;
         $this->personalDetail = $personalDetail;
         $this->address = $address;
         $this->nationality = $nationality;
+        $this->city = $city;
     }
 
     public function getById($id)
@@ -29,10 +31,13 @@ class EmployeeManager
 
     public function create($array)
     {
-        $nationality = $this->nationality->store($array);
-        $address = $this->address->store($array);
+        $city = $this->city->store($array);
+        $array['city_id'] = $city->id;
 
+        $nationality = $this->nationality->store($array);
         $array['nationality_id'] = $nationality->id;
+
+        $address = $this->address->store($array);
         $array['address_id'] = $address->id;
 
         return $this->employee->store($array);

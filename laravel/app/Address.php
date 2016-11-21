@@ -12,7 +12,7 @@ class Address extends Model
      * @var array
      */
     protected $fillable = [
-        'street_name', 'house_number', 'apartment_number'
+        'street_name', 'house_number', 'apartment_number', 'city_id'
     ];
 
     /* << relationships */
@@ -20,6 +20,11 @@ class Address extends Model
     public function personalDetail()
     {
         return $this->belongsTo('App\PersonalDetail');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo('App\City');
     }
 
     /* >> relationships */
@@ -31,6 +36,7 @@ class Address extends Model
         $address->street_name = $array['street_name'];
         $address->house_number = $array['house_number'];
         $address->apartment_number = $array['apartment_number'];
+        $address->city_id = $array['city_id'];
         $address->save();
 
         return $address;

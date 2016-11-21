@@ -16,4 +16,17 @@
 <div class="col-sm-8 col-sm-offset-2">
     <input name="apartment_number" type="number" class="form-control" placeholder="Podaj numer mieszkania">
 </div>
+<!-- City -->
+<div class="col-sm-8 col-sm-offset-2">
+    <input name="country" type="text" class="form-control" placeholder="Podaj kraj">
+</div>
+<div class="col-sm-8 col-sm-offset-2">
+    <input name="city_name" type="text" class="form-control" placeholder="Podaj miasto">
+</div>
+<div class="col-sm-8 col-sm-offset-2">
+    <input name="postal_code" type="text" class="form-control" placeholder="Podaj kod pocztowy">
+</div>
+<div class="col-sm-8 col-sm-offset-2">
+    <input name="state" type="text" class="form-control" placeholder="Podaj Województwo">
+</div>
 
