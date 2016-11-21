@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ $var->firstname }}</td>
                     <td>{{ $var->lastname }}</td>
-                    <td>{{ $var->office_id }}</td>
+                    <td>{{ $var->office['name'] }}</td>
                     <td>
                         <a class="btn btn-primary" href="{{ route('employees.edit', [$var->id]) }}">Edytuj</a>
                     </td>

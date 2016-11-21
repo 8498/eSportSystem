@@ -12,7 +12,7 @@ class PersonalDetail extends Model
      * @var array
      */
     protected $fillable = [
-        'age', 'phone_number', 'card_number'
+        'age', 'phone_number', 'card_number', 'address_id', 'nationality_id'
     ];
 
     /* << relationships */
@@ -20,6 +20,16 @@ class PersonalDetail extends Model
     public function employee()
     {
         return $this->belongsTo('App\Modules\Administration\Models\Employee');
+    }
+
+    public function address()
+    {
+        return $this->hasOne('App\Address','id','address_id');
+    }
+
+    public function nationality()
+    {
+        return $this->hasOne('App\Nationality','id','nationality_id');
     }
 
     /* >> relationships */

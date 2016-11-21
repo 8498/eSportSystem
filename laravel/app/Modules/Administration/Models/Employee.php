@@ -51,7 +51,9 @@ class Employee extends Model
         $personalDetail = $employee->personalDetail()->create([
             'age' => $array['age'],
             'phone_number' => $array['phone_number'],
-            'card_number' => $array['card_number']
+            'card_number' => $array['card_number'],
+            'address_id' => $array['address_id'],
+            'nationality_id' => $array['nationality_id']
         ]);
 
         $employee->firstname = $array['firstname'];
