@@ -46,7 +46,7 @@ class User extends Authenticatable
         $user->role_id = $array['role'];
         $user->save();
 
-        return true;
+        return $user;
     }
 
     public function edit($array)

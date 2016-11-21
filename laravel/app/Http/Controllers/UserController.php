@@ -26,10 +26,9 @@ class UserController extends Controller
 
     public function create(UserCreateRequest $request)
     {
-        if($this->userManager->create($request->all()))
-        {
-            return redirect()->back();
-        }
+        $this->userManager->create($request->all());
+        
+        return redirect()->back();
     }
 
     public function edit($id)

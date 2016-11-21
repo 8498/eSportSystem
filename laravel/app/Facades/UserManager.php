@@ -29,7 +29,9 @@ class UserManager
     {
         $password = $array['password'];
 
-        return $this->user->store($array);
+        $user = $this->user->store($array);
+
+        $this->mailManager->createUserEmail($user, $password);
     }
 
     public function update($array)
