@@ -35,7 +35,7 @@
                         <a class="btn btn-danger" href="{{ route('users.delete', [$var->id]) }}">Usun</a>
                     </td>
                     <td>
-                        <a class="btn btn-info" href="{{ route('mail.passwordresetemail', [$var->id]) }}">Resetuj Hasło</a>
+                        <a class="btn btn-info" href="{{ route('users.passwordreset', [$var->id]) }}">Resetuj Hasło</a>
                     </td>
                 </tr>
                 @endif

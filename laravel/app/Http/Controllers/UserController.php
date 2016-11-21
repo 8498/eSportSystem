@@ -87,6 +87,14 @@ class UserController extends Controller
         return redirect()->route('settings');
     }
 
+    public function resetPassword($id)
+    {
+        $this->userManager->resetPassword($id);
+
+        return redirect()->route('users.view');
+
+    }
+
     public function logout()
     {
         if($this->userManager->logout())

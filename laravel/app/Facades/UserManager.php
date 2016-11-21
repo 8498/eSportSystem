@@ -2,15 +2,17 @@
 
 namespace App\Facades;
 
-use App\User;
-
 use Illuminate\Support\Facades\Auth;
+
+use App\User;
+use App\Modules\Mail\Facades\MailManager;
 
 class UserManager 
 {
-    public function __construct(User $user)
+    public function __construct(User $user, MailManager $mailManager)
     {
         $this->user = $user;
+        $this->mailManager = $mailManager;
     }
 
     public function getById($id)
@@ -25,6 +27,8 @@ class UserManager
 
     public function create($array)
     {
+        $password = $array['password'];
+
         return $this->user->store($array);
     }
 
@@ -69,7 +73,7 @@ class UserManager
         $user = $this->user->getById($id);
         $user->update(['password' => bcrypt($password)]);
 
-        return $password;
+        $this->mailManager->resetPasswordEmail($user, $password);
     }
 
     public function logout()

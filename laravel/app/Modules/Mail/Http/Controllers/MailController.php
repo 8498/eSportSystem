@@ -16,12 +16,4 @@ class MailController extends Controller
     {
         $this->mailManager = $mailManager;
     }
-
-    public function sendResetPasswordEmail($id)
-    {
-
-        if ($this->mailManager->resetPasswordEmail($id)) {
-            return redirect()->route('welcome');
-        }
-    }
 }

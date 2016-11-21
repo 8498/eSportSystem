@@ -13,10 +13,10 @@ class PasswordReset extends Mailable
 {
      use Queueable, SerializesModels;
 
-    public function __construct(User $user, $newpassword)
+    public function __construct(User $user, $password)
     {
         $this->user = $user;
-        $this->newpassword = $newpassword;
+        $this->password = $password;
     }
 
     public function build()
@@ -26,8 +26,8 @@ class PasswordReset extends Mailable
         return $this->view('mail::passwordreset')
             ->subject($subject)
             ->with([
-                'username' => $this->user->name,
-                'newpassword' => $this->newpassword
+                'user' => $this->user,
+                'password' => $this->password
             ]);
     }
 }
