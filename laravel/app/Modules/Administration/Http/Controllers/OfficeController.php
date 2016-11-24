@@ -23,7 +23,7 @@ class OfficeController extends Controller
         return view('administration::offices.index')->with('vars', $vars);
     }
 
-    public function create(Request $request)
+    public function create(OfficeRequest $request)
     {
         if($this->officeManager->create($request->all()))
         {
@@ -37,7 +37,7 @@ class OfficeController extends Controller
         return view('administration::offices.edit')->with('vars', $vars);
     }
 
-    public function update(Request $request)
+    public function update(OfficeRequest $request)
     {
         if($this->officeManager->update($request->all()))
         {
