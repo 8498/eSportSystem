@@ -36,7 +36,7 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
 
     });
     /* Users */
-    Route::group(['prefix' => 'users', 'middleware' => ['role:superadmin']], function() {
+    Route::group(['prefix' => 'users', 'middleware' => ['role'], 'role' => 'superadmin'], function() {
         Route::get('/passwordreset/{id}',['as' => 'users.passwordreset', 'uses' => 'UserController@resetPassword']);
 
         Route::get('/', ['as' => 'users.view', 'uses' => 'UserController@view']);

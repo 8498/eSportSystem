@@ -13,9 +13,11 @@ class Role
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next)
     {
-         if (! $request->user()->hasRole($role)) {
+        $roles = $request->route()->getAction();
+        
+         if (! $request->user()->hasRole($roles)) {
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {

@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'administration'], function() {
+Route::group(['prefix' => 'administration', 'middleware' => ['auth', 'role'], 'role' => ['superadmin', 'administrator']],function() {
 
     Route::get('/', function() {
         dd('This is the Administration module index page. Build something great!');

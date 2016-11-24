@@ -80,11 +80,18 @@ class User extends Authenticatable
         return $this::paginate(10);
     }
 
-    public function hasRole($rolename)
+    public function hasRole($roles)
     {
-        if($this::role()->getResults()->name === $rolename)
-        {
-            return true;
+        if (is_array($roles)) {
+            foreach ($roles['role'] as $role) {
+                if ($this::role()->getResults()->name === $role) {
+                    return true;
+                }
+            }
+        } else {
+            if ($this::role()->getResults()->name === $roles) {
+                return true;
+            }
         }
         return false;
     }
