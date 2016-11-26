@@ -45,10 +45,8 @@ class EmployeeController extends Controller
 
     public function update(Request $request)
     {
-        if($this->employeeManager->update($request->all()))
-        {
-            return redirect()->route('employees.view');
-        }
+        $this->employeeManager->update($request->all());
+        return redirect()->route('employees.view');
     }
 
     public function delete($id)

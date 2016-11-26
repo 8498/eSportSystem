@@ -48,18 +48,10 @@ class Employee extends Model
     {
         $employee = new $this();
 
-        $personalDetail = $employee->personalDetail()->create([
-            'age' => $array['age'],
-            'phone_number' => $array['phone_number'],
-            'card_number' => $array['card_number'],
-            'address_id' => $array['address_id'],
-            'nationality_id' => $array['nationality_id']
-        ]);
-
         $employee->firstname = $array['firstname'];
         $employee->lastname = $array['lastname'];
         $employee->office_id = $array['office'];
-        $employee->personal_detail_id = $personalDetail->id;
+        $employee->personal_detail_id = $array['personal_detail_id'];
         $employee->save();
 
         return true;

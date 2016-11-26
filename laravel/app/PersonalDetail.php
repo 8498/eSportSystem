@@ -34,16 +34,33 @@ class PersonalDetail extends Model
 
     /* >> relationships */
 
+    public function store($array)
+    { 
+        $personalDetail = new $this();
+
+        $personalDetail->age = $array['age'];
+        $personalDetail->phone_number = $array['phone_number'];
+        $personalDetail->card_number = $array['card_number'];
+        $personalDetail->address_id = $array['address_id'];
+        $personalDetail->nationality_id = $array['nationality_id'];
+
+        $personalDetail->save();
+
+        return $personalDetail;
+    }
+
     public function edit($array)
     {
         $personalDetail = $this::find($array['personal_detail_id']);
+
+        $natonality = $personalDetail->nationality()->update([
+            'nationality_name' => $array['nationality_name']
+        ]);
 
         $personalDetail->update([
             'age' => $array['age'],
             'phone_number' => $array['phone_number'],
             'card_number' => $array['card_number']
         ]);
-
-        return true;
     }
 }

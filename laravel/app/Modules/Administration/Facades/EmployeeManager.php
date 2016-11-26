@@ -3,17 +3,17 @@
 namespace App\Modules\Administration\Facades;
 
 use App\Modules\Administration\Models\Employee;
-use App\PersonalDetail;
+use App\Facades\PersonalDetailManager;
 use App\Address;
 use App\Nationality;
 use App\City;
 
 class EmployeeManager 
 {
-    public function __construct(Employee $employee, PersonalDetail $personalDetail, Address $address, Nationality $nationality, City $city)
+    public function __construct(Employee $employee, PersonalDetailManager $personalDetailManager, Address $address, Nationality $nationality, City $city)
     {
         $this->employee = $employee;
-        $this->personalDetail = $personalDetail;
+        $this->personalDetailManager = $personalDetailManager;
         $this->address = $address;
         $this->nationality = $nationality;
         $this->city = $city;
@@ -40,24 +40,16 @@ class EmployeeManager
         $address = $this->address->store($array);
         $array['address_id'] = $address->id;
 
+        $personalDetail = $this->personalDetailManager->create($array);
+        $array['personal_detail_id'] = $personalDetail->id;
+
         return $this->employee->store($array);
     }
 
     public function update($array)
     {
-        if($this->nationality->edit($array))
-        {
-            if($this->address->edit($array))
-            {
-                if($this->employee->edit($array))
-                {
-                    if($this->personalDetail->edit($array))
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
+        $this->employee->edit($array);
+        $this->personalDetailManager->update($array);
     }
 
     public function delete($id)
