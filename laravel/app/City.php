@@ -19,37 +19,40 @@ class City extends Model
 
     public function address()
     {
-        return $this->hasMany('App\Address','city_id','id');
+        return $this->hasMany('App\Address', 'city_id', 'id');
     }
 
     /* >> relationships */
 
+    public function getById($id)
+    {
+        $city = $this::find($id);
+
+        return $city;
+    }
+
+    public function getByName($name)
+    {
+        $city = $this::where('city_name', $name)->first();
+
+        return $city;
+    }
+
+    public function getAll()
+    {
+        return $this::all();
+    }
+
     public function store($array)
     {
-        $cities = $this::all();
+        $city = new $this();
 
-        $found_city = null;
+        $city->city_name = $array['city_name'];
+        $city->postal_code = $array['postal_code'];
+        $city->state = $array['state'];
+        $city->country = $array['country'];
+        $city->save();
 
-        foreach ($cities as $city) {
-            if ($city->city_name === $array['city_name']) {
-                $found_city = $city;
-                break;
-            }
-        }
-        if ($found_city != null) {
-            $return = $found_city;
-        } else {
-            $city = new $this();
-
-            $city->city_name = $array['city_name'];
-            $city->postal_code = $array['postal_code'];
-            $city->state = $array['state'];
-            $city->country = $array['country'];
-            $city->save();
-
-            $return = $city;
-        }
-
-        return $return;
+        return $city;
     }
 }

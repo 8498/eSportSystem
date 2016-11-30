@@ -4,19 +4,19 @@ namespace App\Modules\Administration\Facades;
 
 use App\Modules\Administration\Models\Employee;
 use App\Facades\PersonalDetailManager;
-use App\Address;
-use App\Nationality;
-use App\City;
+use App\Facades\AddressManager;
+use App\Facades\NationalityManager;
+use App\Facades\CityManager;
 
 class EmployeeManager 
 {
-    public function __construct(Employee $employee, PersonalDetailManager $personalDetailManager, Address $address, Nationality $nationality, City $city)
+    public function __construct(Employee $employee, PersonalDetailManager $personalDetailManager, AddressManager $addressManager, NationalityManager $nationalityManager, CityManager $cityManager)
     {
         $this->employee = $employee;
         $this->personalDetailManager = $personalDetailManager;
-        $this->address = $address;
-        $this->nationality = $nationality;
-        $this->city = $city;
+        $this->addressManager = $addressManager;
+        $this->nationalityManager = $nationalityManager;
+        $this->cityManager = $cityManager;
     }
 
     public function getById($id)
@@ -31,14 +31,14 @@ class EmployeeManager
 
     public function create($array)
     {
-        $city = $this->city->store($array);
+        $city = $this->cityManager->create($array);
         $array['city_id'] = $city->id;
 
-        $nationality = $this->nationality->store($array);
-        $array['nationality_id'] = $nationality->id;
-
-        $address = $this->address->store($array);
+        $address = $this->addressManager->create($array);
         $array['address_id'] = $address->id;
+
+        $nationality = $this->nationalityManager->create($array);
+        $array['nationality_id'] = $nationality->id;
 
         $personalDetail = $this->personalDetailManager->create($array);
         $array['personal_detail_id'] = $personalDetail->id;
@@ -48,6 +48,12 @@ class EmployeeManager
 
     public function update($array)
     {
+        $city = $this->cityManager->create($array);
+        $array['city_id'] = $city->id;
+
+        $nationality = $this->nationalityManager->create($array);
+        $array['nationality_id'] = $nationality->id;
+
         $this->employee->edit($array);
         $this->personalDetailManager->update($array);
     }

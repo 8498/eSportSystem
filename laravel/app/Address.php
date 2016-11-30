@@ -46,19 +46,11 @@ class Address extends Model
     {
         $address = $this::find($array['address_id']);
 
-        $city = $address->city()->update([
-            'city_name' => $array['city_name'], 
-            'postal_code' => $array['postal_code'], 
-            'state' => $array['state'], 
-            'country' => $array['country']
-        ]);
-
         $address->update([
             'street_name' => $array['street_name'],
             'house_number' => $array['house_number'],
-            'apartment_number' => $array['apartment_number']
+            'apartment_number' => $array['apartment_number'],
+            'city_id' => $array['city_id']
         ]);
-
-        return true;
     }
 }

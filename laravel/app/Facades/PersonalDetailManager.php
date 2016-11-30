@@ -3,16 +3,16 @@
 namespace App\Facades;
 
 use App\PersonalDetail;
-use App\Address;
+use App\Facades\AddressManager;
 
 
 class PersonalDetailManager 
 {
 
-    public function __construct(PersonalDetail $personalDetail, Address $address)
+    public function __construct(PersonalDetail $personalDetail, AddressManager $addressManager)
     {
         $this->personalDetail = $personalDetail;
-        $this->address = $address;
+        $this->addressManager = $addressManager;
     }
 
     public function create($array)
@@ -22,7 +22,7 @@ class PersonalDetailManager
 
     public function update($array)
     {
-        $this->address->edit($array);
+        $this->addressManager->update($array);
         $this->personalDetail->edit($array);
     }
 

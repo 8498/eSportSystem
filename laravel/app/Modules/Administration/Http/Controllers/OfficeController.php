@@ -4,10 +4,10 @@ namespace App\Modules\Administration\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Modules\Administration\Facades\OfficeManager;
+use App\Modules\Administration\Http\Requests\OfficeRequest;
 
 class OfficeController extends Controller
 {

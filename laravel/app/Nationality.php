@@ -24,40 +24,32 @@ class Nationality extends Model
 
     /* >> relationships */
 
-    public function store($array)
+    public function getById($id)
     {
-        $nationalities = $this::all();
+        $nationality = $this::find($id);
 
-        $found_nationality = null;
-
-        foreach ($nationalities as $nationality) {
-            if ($nationality->nationality_name === $array['nationality_name']) {
-                $found_nationality = $nationality;
-                break;
-            }
-        }
-        if ($found_nationality != null) {
-            $return = $found_nationality;
-        } else {
-            $nationality = new $this();
-
-            $nationality->nationality_name = $array['nationality_name'];
-            $nationality->save();
-
-            $return = $nationality;
-        }
-
-        return $return;
+        return $nationality;
     }
 
-    public function edit($array)
+    public function getByName($name)
     {
-        $nationality = $this::find($array['nationality_id']);
+        $nationality = $this::where('nationality_name', $name)->first();
 
-        $nationality->update([
-            'nationality_name' => $array['nationality_name']
-        ]);
+        return $nationality;
+    }
 
-        return true;
+    public function getAll()
+    {
+        return $this::all();
+    }
+
+    public function store($array)
+    {
+        $nationality = new $this();
+
+        $nationality->nationality_name = $array['nationality_name'];
+        $nationality->save();
+
+        return $nationality;
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Modules\Administration\Http\Requests;
 
-use App\Http\Requests\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
-class EmployeeRequest extends Request
+class EmployeeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class EmployeeRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

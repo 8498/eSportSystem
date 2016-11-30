@@ -53,14 +53,11 @@ class PersonalDetail extends Model
     {
         $personalDetail = $this::find($array['personal_detail_id']);
 
-        $natonality = $personalDetail->nationality()->update([
-            'nationality_name' => $array['nationality_name']
-        ]);
-
         $personalDetail->update([
             'age' => $array['age'],
             'phone_number' => $array['phone_number'],
-            'card_number' => $array['card_number']
+            'card_number' => $array['card_number'],
+            'nationality_id' => $array['nationality_id']
         ]);
     }
 }
