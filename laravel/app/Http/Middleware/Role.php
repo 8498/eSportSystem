@@ -17,7 +17,7 @@ class Role
     {
         $roles = $request->route()->getAction();
         
-         if (! $request->user()->hasRole($roles)) {
+         if (! $request->user()->hasRole($roles['role'])) {
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
