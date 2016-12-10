@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Modules\Administration\Facades\EmployeeManager;
+use App\Modules\Administration\Http\Requests\EmployeeRequest;
 
 class EmployeeController extends Controller
 {
@@ -29,7 +30,7 @@ class EmployeeController extends Controller
         return view('administration::employees.show')->with('vars', $vars);
     }
 
-    public function create(Request $request)
+    public function create(EmployeeRequest $request)
     {
         if($this->employeeManager->create($request->all()))
         {

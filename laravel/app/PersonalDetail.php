@@ -12,7 +12,7 @@ class PersonalDetail extends Model
      * @var array
      */
     protected $fillable = [
-        'age', 'phone_number', 'card_number', 'address_id', 'nationality_id'
+        'birthday', 'phone_number', 'card_number', 'address_id', 'nationality_id'
     ];
 
     /* << relationships */
@@ -38,7 +38,7 @@ class PersonalDetail extends Model
     { 
         $personalDetail = new $this();
 
-        $personalDetail->age = $array['age'];
+        $personalDetail->birthday = $array['birthday'];
         $personalDetail->phone_number = $array['phone_number'];
         $personalDetail->card_number = $array['card_number'];
         $personalDetail->address_id = $array['address_id'];
@@ -54,7 +54,7 @@ class PersonalDetail extends Model
         $personalDetail = $this::find($array['personal_detail_id']);
 
         $personalDetail->update([
-            'age' => $array['age'],
+            'birthday' => $array['birthday'],
             'phone_number' => $array['phone_number'],
             'card_number' => $array['card_number'],
             'nationality_id' => $array['nationality_id']

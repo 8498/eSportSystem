@@ -24,8 +24,8 @@
                 </div>
                 <!-- Personal Detail-->
                 <div class="col-sm-8 col-sm-offset-2">
-                    <label for="age">Wiek</label>
-                    <input name="age" type="number" class="form-control" value="{{ $vars['personalDetail']->age }}">
+                    <label for="birthday">Wiek</label>
+                    <input name="birthday" type="date" class="form-control" value="{{ $vars['personalDetail']->birthday }}">
                 </div>
                 <div class="col-sm-8 col-sm-offset-2">
                     <label for="phone_number">Nr tel.</label>

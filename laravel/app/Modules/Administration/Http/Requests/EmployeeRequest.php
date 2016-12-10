@@ -27,7 +27,7 @@ class EmployeeRequest extends FormRequest
             'firstname' => 'required',
             'lastname' => 'required',
             'office' => 'required',
-            'age' => 'required',
+            'birthday' => 'required|date|before:tomorrow',
             'phone_number' => 'required',
             'card_number' => 'required',
             'street_name' => 'required',

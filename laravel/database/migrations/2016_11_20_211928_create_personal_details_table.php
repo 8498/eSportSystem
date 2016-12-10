@@ -15,7 +15,7 @@ class CreatePersonalDetailsTable extends Migration
     {
         Schema::create('personal_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('age');
+            $table->date('birthday');
             $table->integer('phone_number');
             $table->string('card_number');
             $table->integer('address_id');

@@ -6,7 +6,7 @@
     <div class="panel-heading">{{ $vars['employee']->firstname }} {{ $vars['employee']->lastname }}</div>
     <div class="panel-body">
         <p>Stanowisko: {{ $vars['employee']['office']->name }}</p>
-        <p>Wiek: {{ $vars['personalDetail']->age }}</p>
+        <p>Data ur: {{ $vars['personalDetail']->birthday }}</p>
         <p>Numer tel: {{ $vars['personalDetail']->phone_number }}</p>
         <p>Numer dowodu: {{ $vars['personalDetail']->card_number }}</p>
         <p>Narodowość: {{ $vars['personalDetail']['nationality']->nationality_name }}</p>
