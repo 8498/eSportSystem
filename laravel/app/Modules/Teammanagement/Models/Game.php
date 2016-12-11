@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Modules\Teammanagement\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Game extends Model
+{
+    protected $fillable = [
+        'name', 'game_logo'
+    ];
+
+    public function getById($id)
+    {
+        $game = $this::find($id);
+
+        return $game;
+    }
+
+    public function getAll()
+    {
+        return $this::all();
+    }
+
+    public function store($array)
+    {
+        $game = new $this();
+
+        $game->name = $array['name'];
+        $game->game_logo = $array['game_logo'];
+        $game->save();
+
+        return $game;
+    }
+
+    public function edit($array)
+    {
+        $game = $this::find($array['id']);
+
+        $game->update([
+            'name' => $array['name'],
+            'game_logo' => $array['game_logo']
+        ]);
+    }
+}
