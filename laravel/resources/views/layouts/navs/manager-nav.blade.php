@@ -1,0 +1,1 @@
+<li><a href="{{ route('games.view') }}">{{ ('Gry') }}</a></li>

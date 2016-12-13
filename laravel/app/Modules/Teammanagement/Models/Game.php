@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
     protected $fillable = [
-        'name', 'game_logo'
+        'name'
     ];
 
     public function getById($id)
@@ -27,7 +27,6 @@ class Game extends Model
         $game = new $this();
 
         $game->name = $array['name'];
-        $game->game_logo = $array['game_logo'];
         $game->save();
 
         return $game;
@@ -39,7 +38,15 @@ class Game extends Model
 
         $game->update([
             'name' => $array['name'],
-            'game_logo' => $array['game_logo']
         ]);
+    }
+
+    public function del($id)
+    {
+        $game = $this->getById($id);
+
+        $game->delete();
+
+        return true;
     }
 }
