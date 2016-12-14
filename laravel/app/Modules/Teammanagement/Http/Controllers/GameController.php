@@ -41,6 +41,7 @@ class GameController extends Controller
     public function update(Request $request)
     {
         $this->gameManager->update($request->all());
+        
         return redirect()->route('games.view');
     }
 

@@ -16,11 +16,23 @@ Route::group(['prefix' => 'teammanagement', 'middleware' => ['auth', 'role'], 'r
     /* Game */
     Route::group(['prefix' => 'games'], function() {
         Route::get('/', ['as' => 'games.view', 'uses' => 'GameController@view']);
+
+        Route::get('/edit/{id}', ['as' => 'games.edit', 'uses' => 'GameController@edit']);
+
+        Route::post('/create', ['as' => 'games.create', 'uses' => 'GameController@create']);
+        Route::post('/edit',['as' => 'games.update', 'uses' => 'GameController@update']);
+        Route::get('/delete/{id}', ['as' => 'games.delete', 'uses' => 'GameController@delete']);
     });
 
-    Route::get('/edit/{id}', ['as' => 'games.edit', 'uses' => 'GameController@edit']);
+    Route::group(['prefix' => 'teams'], function() {
+        Route::get('/', ['as' => 'teams.view', 'uses' => 'TeamController@view']);
+        Route::get('/show/{id}', ['as' => 'teams.show', 'uses' => 'TeamController@show']);
 
-    Route::post('/create', ['as' => 'games.create', 'uses' => 'GameController@create']);
-    Route::post('/edit',['as' => 'games.update', 'uses' => 'GameController@update']);
-    Route::get('/delete/{id}', ['as' => 'games.delete', 'uses' => 'GameController@delete']);
+        Route::get('/edit/{id}', ['as' => 'teams.edit', 'uses' => 'TeamController@edit']);
+
+        Route::post('/create', ['as' => 'teams.create', 'uses' => 'TeamController@create']);
+        Route::post('/edit',['as' => 'teams.update', 'uses' => 'TeamController@update']);
+        Route::get('/delete/{id}', ['as' => 'teams.delete', 'uses' => 'TeamController@delete']);
+    });
+
 });
