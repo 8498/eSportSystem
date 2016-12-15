@@ -8,12 +8,16 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Modules\Teammanagement\Facades\TeamManager;
+use App\Modules\Teammanagement\Facades\TeamGameManager;
+use App\Modules\Teammanagement\Facades\GameManager;
 
 class TeamController extends Controller
 {
-    public function __construct(TeamManager $teamManager)
+    public function __construct(TeamManager $teamManager, TeamGameManager $teamGameManager, GameManager $gameManager)
     {
         $this->teamManager = $teamManager;
+        $this->teamGameManager = $teamGameManager;
+        $this->gameManager = $gameManager;
     }
 
     public function view()
@@ -25,7 +29,10 @@ class TeamController extends Controller
 
     public function show($id)
     {
-        $vars = $this->teamManager->getById($id);
+        $vars = [ 
+            'team' => $this->teamManager->getById($id), 
+            'games' => $this->gameManager->getAll()
+        ];
 
         return view('teammanagement::teams.show')->with('vars', $vars);
     }
@@ -58,5 +65,23 @@ class TeamController extends Controller
         {
             return redirect()->route('teams.view');
         }
+    }
+
+    public function addGame(Request $request)
+    {
+        $array = $request->all();
+        
+        $this->teamGameManager->addGameToTeam($array);
+
+        return redirect()->back();
+    }
+
+    public function removeGame(Request $request)
+    {
+        $array = $request->all();
+        
+        $this->teamGameManager->removeGameFromTeam($array);
+
+        return redirect()->back();
     }
 }

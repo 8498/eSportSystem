@@ -10,6 +10,15 @@ class Team extends Model
         'name', 'tag'
     ];
 
+    // << relationship
+
+    public function games()
+    {
+        return $this->belongsToMany('App\Modules\Teammanagement\Models\Game');
+    }
+
+    // << relationship
+
     public function getById($id)
     {
         $team = $this::find($id);
