@@ -28,6 +28,11 @@ class Employee extends Model
         return $this->belongsTo('App\Modules\Administration\Models\Office');
     }
 
+    public function player()
+    {
+        return $this->belongsTo('App\Modules\Teammanagement\Models\Player');
+    }
+
     /* >> relationships */
 
     public function getById($id)

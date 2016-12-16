@@ -24,7 +24,7 @@
                 </div>
                 <!-- Personal Detail-->
                 <div class="col-sm-8 col-sm-offset-2">
-                    <label for="birthday">Wiek</label>
+                    <label for="birthday">Data ur <small>(yyyy-mm-dd)</small></label>
                     <input name="birthday" type="date" class="form-control" value="{{ $vars['personalDetail']->birthday }}">
                 </div>
                 <div class="col-sm-8 col-sm-offset-2">

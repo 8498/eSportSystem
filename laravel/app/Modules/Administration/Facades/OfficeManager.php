@@ -27,6 +27,13 @@ class OfficeManager
     public function getAll()
     {
         $offices = $this->office->getAll();
+
+        return $offices;
+    }
+
+    public function getAllWithoutPlayer()
+    {
+        $offices = $this->office->getAll()->where('name', '!=', 'player');
         if(Request::ajax())
         {
             return Response::json($offices);

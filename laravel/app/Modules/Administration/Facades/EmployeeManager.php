@@ -30,7 +30,7 @@ class EmployeeManager
     }
 
     public function create($array)
-    {
+    {   
         $city = $this->cityManager->create($array);
         $array['city_id'] = $city->id;
 
