@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Office extends Model
 {
-
     /**
      * The attributes that are mass assignable.
      *
@@ -24,6 +23,15 @@ class Office extends Model
     }
 
     /* >> relationships */
+
+    public static function getPlayer()
+    {
+        $player = Office::where('name', 'gracz')->first();
+
+        $playerId = $player->id;
+        
+        return $playerId;
+    }
 
     public function getById($id)
     {

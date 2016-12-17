@@ -53,4 +53,11 @@ class Address extends Model
             'city_id' => $array['city_id']
         ]);
     }
+
+    public function del($id)
+    {
+        $address = $this::find($id);
+
+        $address->delete();
+    }
 }

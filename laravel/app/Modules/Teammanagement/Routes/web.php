@@ -38,4 +38,16 @@ Route::group(['prefix' => 'teammanagement', 'middleware' => ['auth', 'role'], 'r
         Route::post('/removeGame', ['as' => 'teams.remove-game', 'uses' => 'TeamController@removeGame']);
     });
 
+    Route::group(['prefix' => 'players'], function() {
+        Route::get('/', ['as' => 'players.view', 'uses' => 'PlayerController@view']);
+        Route::get('/show/{id}', ['as' => 'players.show', 'uses' => 'PlayerController@show']);
+
+        Route::get('/edit/{id}', ['as' => 'players.edit', 'uses' => 'PlayerController@edit']);
+
+        Route::post('/create', ['as' => 'players.create', 'uses' => 'PlayerController@create']);
+        Route::post('/edit',['as' => 'players.update', 'uses' => 'PlayerController@update']);
+        Route::get('/delete/{id}', ['as' => 'players.delete', 'uses' => 'PlayerController@delete']);
+    
+    });
+
 });

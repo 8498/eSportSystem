@@ -33,7 +33,7 @@ class OfficeManager
 
     public function getAllWithoutPlayer()
     {
-        $offices = $this->office->getAll()->where('name', '!=', 'player');
+        $offices = $this->office->getAll()->where('name', '!=', 'gracz');
         if(Request::ajax())
         {
             return Response::json($offices);

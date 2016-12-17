@@ -8,7 +8,7 @@ use App\Facades\AddressManager;
 use App\Facades\NationalityManager;
 use App\Facades\CityManager;
 
-class EmployeeManager 
+class EmployeeManager
 {
     public function __construct(Employee $employee, PersonalDetailManager $personalDetailManager, AddressManager $addressManager, NationalityManager $nationalityManager, CityManager $cityManager)
     {
@@ -30,7 +30,7 @@ class EmployeeManager
     }
 
     public function create($array)
-    {   
+    {
         $city = $this->cityManager->create($array);
         $array['city_id'] = $city->id;
 
@@ -60,6 +60,12 @@ class EmployeeManager
 
     public function delete($id)
     {
+        $employee = $this->employee->getById($id);
+
+        $personal_detail_id = $employee['employee']->personal_detail_id;
+
+        $this->personalDetailManager->delete($personal_detail_id);
+
         return $this->employee->del($id);
     }
 }

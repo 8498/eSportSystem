@@ -34,6 +34,13 @@ class PersonalDetail extends Model
 
     /* >> relationships */
 
+    public function getById($id)
+    {
+        $personalDetail = $this::find($id);
+
+        return $personalDetail;
+    }
+
     public function store($array)
     { 
         $personalDetail = new $this();
@@ -59,5 +66,13 @@ class PersonalDetail extends Model
             'card_number' => $array['card_number'],
             'nationality_id' => $array['nationality_id']
         ]);
+    }
+
+    public function del($id)
+    {
+        $personalDetail = $this::find($id);
+
+        $personalDetail->delete();
+
     }
 }

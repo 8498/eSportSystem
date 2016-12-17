@@ -7,20 +7,24 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Modules\Administration\Models\Office;
+
 use App\Modules\Administration\Facades\EmployeeManager;
+use App\Modules\Teammanagement\Facades\DeletePlayerManager;
+
 use App\Modules\Administration\Http\Requests\EmployeeRequest;
 
 class EmployeeController extends Controller
 {
-    public function __construct(EmployeeManager $employeeManager)
+    public function __construct(EmployeeManager $employeeManager, DeletePlayerManager $deletePlayerManager)
     {
         $this->employeeManager = $employeeManager;
+        $this->deletePlayerManager = $deletePlayerManager;
     }
 
     public function view()
     {
         $vars = $this->employeeManager->getPaginateAll();
-
         return view('administration::employees.index')->with('vars', $vars);
     }
 
@@ -32,10 +36,8 @@ class EmployeeController extends Controller
 
     public function create(EmployeeRequest $request)
     {
-        if($this->employeeManager->create($request->all()))
-        {
-            return redirect()->back();
-        }
+        $this->employeeManager->create($request->all());
+        return redirect()->back();
     }
 
     public function edit($id)
@@ -52,9 +54,15 @@ class EmployeeController extends Controller
 
     public function delete($id)
     {
-        if($this->employeeManager->delete($id))
-        {
-            return redirect()->route('employees.view');
+        $employee = $this->employeeManager->getById($id);
+
+        if ($employee['employee']->office_id == Office::getPlayer()) {
+            $array['employee_id'] = $id;
+            $this->deletePlayerManager->delete($array);
         }
+
+        $this->employeeManager->delete($employee['employee']->id);
+
+        return redirect()->route('employees.view');
     }
 }

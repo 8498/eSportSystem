@@ -26,4 +26,15 @@ class PersonalDetailManager
         $this->personalDetail->edit($array);
     }
 
+    public function delete($id)
+    {
+        $personalDetail = $this->personalDetail->getById($id);
+
+        $address_id = $personalDetail->address_id;
+
+        $this->addressManager->delete($address_id);
+
+        $this->personalDetail->del($id);
+    }
+
 }

@@ -20,4 +20,9 @@ class AddressManager
     {
         return $this->address->edit($array);
     }
+
+    public function delete($id)
+    {
+        $this->address->del($id);
+    }
 }

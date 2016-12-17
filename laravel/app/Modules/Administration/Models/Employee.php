@@ -30,7 +30,7 @@ class Employee extends Model
 
     public function player()
     {
-        return $this->belongsTo('App\Modules\Teammanagement\Models\Player');
+        return $this->belongsTo('App\Modules\Teammanagement\Models\Player', 'id', 'employee_id');
     }
 
     /* >> relationships */
@@ -59,7 +59,7 @@ class Employee extends Model
         $employee->personal_detail_id = $array['personal_detail_id'];
         $employee->save();
 
-        return true;
+        return $employee;
     }
 
     public function edit($array)
@@ -77,7 +77,7 @@ class Employee extends Model
 
     public function del($id)
     {
-        $employee = $this->getById($id);
+        $employee = $this::find($id);
 
         $employee->delete();
 

@@ -12,11 +12,7 @@ class OfficeSeeder extends Seeder
     public function run()
     {
         $offices = [
-            $office1 = ['name' => 'administrator'], 
-            $office2 = ['name' => 'coach'],
-            $office3 = ['name' => 'manager'],
-            $office4 = ['name' => 'scout'],
-            $office5 = ['name' => 'player']
+            $office1 = ['name' => 'gracz']
         ];
 
 
