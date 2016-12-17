@@ -4,13 +4,15 @@ namespace App\Modules\Teammanagement\Facades;
 
 use App\Modules\Teammanagement\Models\Player;
 use App\Modules\Administration\Facades\EmployeeManager;
+use App\Modules\Teammanagement\Facades\PlayerDetailManager;
 
 class PlayerManager
 {
-    public function __construct(Player $player, EmployeeManager $employeeManager)
+    public function __construct(Player $player, EmployeeManager $employeeManager, PlayerDetailManager $playerDetailManager)
     {
         $this->player = $player;
         $this->employeeManager = $employeeManager;
+        $this->playerDetailManager = $playerDetailManager;
     }
 
     public function getById($id) 
@@ -28,6 +30,10 @@ class PlayerManager
         $employee = $this->employeeManager->create($array);
 
         $array['employee_id'] = $employee->id;
+
+        $playerDetail = $this->playerDetailManager->create($array);
+
+        $array['player_detail_id'] = $playerDetail->id;
 
         return $this->player->store($array);
     }

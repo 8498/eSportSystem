@@ -66,6 +66,6 @@ class EmployeeManager
 
         $this->personalDetailManager->delete($personal_detail_id);
 
-        return $this->employee->del($id);
+        $this->employee->del($id);
     }
 }

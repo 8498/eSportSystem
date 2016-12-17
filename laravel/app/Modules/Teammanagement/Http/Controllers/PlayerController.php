@@ -9,13 +9,15 @@ use App\Http\Controllers\Controller;
 
 use App\Modules\Teammanagement\Facades\PlayerManager;
 use App\Modules\Teammanagement\Facades\DeletePlayerManager;
+use App\Modules\Teammanagement\Facades\PlayerGameManager;
 
 class PlayerController extends Controller
 {
-    public function __construct(PlayerManager $playerManager, DeletePlayerManager $deletePlayerManager)
+    public function __construct(PlayerManager $playerManager, DeletePlayerManager $deletePlayerManager, PlayerGameManager $playerGameManager)
     {
         $this->playerManager = $playerManager;
         $this->deletePlayerManager = $deletePlayerManager;
+        $this->playerGameManager = $playerGameManager;
     }
 
     public function view()
@@ -60,5 +62,23 @@ class PlayerController extends Controller
         $this->deletePlayerManager->delete($array);
         
         return redirect()->route('players.view');
+    }
+
+    public function addGame(Request $request)
+    {
+        $array = $request->all();
+        
+        $this->playerGameManager->addGameToPlayer($array);
+
+        return redirect()->back();
+    }
+
+    public function removeGame(Request $request)
+    {
+        $array = $request->all();
+        
+        $this->playerGameManager->removeGameFromPlayer($array);
+
+        return redirect()->back();
     }
 }

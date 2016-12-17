@@ -10,6 +10,20 @@ class Game extends Model
         'name'
     ];
 
+    // << relationship
+
+    public function teams()
+    {
+        return $this->belongsToMany('App\Modules\Teammanagement\Models\Team');
+    }
+
+    public function players()
+    {
+        return $this->belongsToMany('App\Modules\Teammanagement\Models\Player');
+    }
+
+    // << relationship
+
     public function getById($id)
     {
         $game = $this::find($id);

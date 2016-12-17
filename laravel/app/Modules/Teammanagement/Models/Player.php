@@ -14,6 +14,16 @@ class Player extends Model
         return $this->hasOne('App\Modules\Administration\Models\Employee', 'id', 'employee_id');
     }
 
+    public function playerDetail()
+    {
+        return $this->hasOne('App\Modules\Teammanagement\Models\PlayerDetail', 'id', 'player_detail_id');
+    }
+
+    public function games()
+    {
+        return $this->belongsToMany('App\Modules\Teammanagement\Models\Game');
+    }
+
     // << relationship
 
     public function getById($id)
@@ -33,6 +43,7 @@ class Player extends Model
         $player = new $this();
 
         $player->employee_id = $array['employee_id'];
+        $player->player_detail_id = $array['player_detail_id'];
         $player->save();
 
         return $player;
@@ -42,8 +53,8 @@ class Player extends Model
     {
         $player = $this::find($array['id']);
 
-        $player->update([
-            'employee_id' => $array['employee_id']
+        $player->playerDetail->update([
+            'nickname' => $array['nickname']
         ]);
     }
 

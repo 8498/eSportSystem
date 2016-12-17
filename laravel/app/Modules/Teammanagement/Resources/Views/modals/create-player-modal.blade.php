@@ -20,6 +20,7 @@
                         <div class="col-sm-8 col-sm-offset-2">
                             <input name="nationality_name" type="text" class="form-control" placeholder="Podaj narodowość">
                         </div>
+                        @include('partials.form-player-details')
                     </div>
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-default">{{ ('Utwórz') }}</button>

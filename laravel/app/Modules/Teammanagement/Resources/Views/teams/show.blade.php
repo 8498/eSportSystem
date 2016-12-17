@@ -22,5 +22,5 @@
         </div>
     </div>
 
-    @include('teammanagement::modals.add-game-modal')
+    @include('teammanagement::modals.add-game-team-modal')
 @endsection

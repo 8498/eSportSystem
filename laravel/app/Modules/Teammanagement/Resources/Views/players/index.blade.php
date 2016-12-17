@@ -9,6 +9,7 @@
                 <tr>
                     <th>Imie</th>
                     <th>Nazwisko</th>
+                    <th>Nick</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -16,6 +17,7 @@
                 <tr>
                     <td>{{ $var->employee->firstname }}</td>
                     <td>{{ $var->employee->lastname }}</td>
+                    <td>{{ $var->playerDetail->nickname }}</td>
                     <td>
                         <a class="btn btn-primary" href="{{ route('players.edit', [$var->id]) }}">Edytuj</a>
                     </td>
