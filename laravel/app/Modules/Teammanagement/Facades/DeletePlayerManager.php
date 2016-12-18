@@ -20,7 +20,7 @@ class DeletePlayerManager
         if (isset($array['employee_id'])) {
             $employee = $this->employeeManager->getById($array['employee_id']);
 
-            $playerId = $employee['employee']->player->id;
+            $playerId = $employee->player->id;
 
             $player = $this->playerManager->getById($playerId);
 
@@ -28,7 +28,7 @@ class DeletePlayerManager
 
             $this->playerDetailManager->delete($player->player_detail_id);
 
-            $this->employeeManager->delete($employee['employee']->id);
+            $this->employeeManager->delete($employee->id);
         } else{
             if (isset($array['player_id'])) {
                 $player = $this->playerManager->getById($array['player_id']);

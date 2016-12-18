@@ -39,9 +39,7 @@ class Employee extends Model
     {
         $employee = $this::find($id);
 
-        $personalDetail = $this::find($id)->personalDetail()->first();
-
-        return $array = ['employee' => $employee, 'personalDetail' => $personalDetail];
+        return $employee;
     }
 
     public function getPaginateAll()

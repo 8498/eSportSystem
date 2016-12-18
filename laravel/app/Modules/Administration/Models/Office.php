@@ -27,10 +27,8 @@ class Office extends Model
     public static function getPlayer()
     {
         $player = Office::where('name', 'gracz')->first();
-
-        $playerId = $player->id;
         
-        return $playerId;
+        return $player;
     }
 
     public function getById($id)

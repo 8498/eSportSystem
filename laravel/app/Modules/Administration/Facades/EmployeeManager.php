@@ -62,7 +62,7 @@ class EmployeeManager
     {
         $employee = $this->employee->getById($id);
 
-        $personal_detail_id = $employee['employee']->personal_detail_id;
+        $personal_detail_id = $employee->personal_detail_id;
 
         $this->personalDetailManager->delete($personal_detail_id);
 

@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <form method="post" action="{{ route('players.create') }}" class="form-horizontal">
                 {{ csrf_field() }}
-                    <input type="hidden" name="office" value="{{ App\Modules\Administration\Models\Office::getPlayer() }}">
+                    <input type="hidden" name="office" value="{{ App\Modules\Administration\Models\Office::getPlayer()->id }}">
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
                             <input name="firstname" type="text" class="form-control" placeholder="Podaj imie">

@@ -56,11 +56,11 @@ class EmployeeController extends Controller
     {
         $employee = $this->employeeManager->getById($id);
 
-        if ($employee['employee']->office_id == Office::getPlayer()) {
+        if ($employee->office_id == Office::getPlayer()->id) {
             $array['employee_id'] = $id;
             $this->deletePlayerManager->delete($array);
         } else {
-            $this->employeeManager->delete($employee['employee']->id);
+            $this->employeeManager->delete($employee->id);
         }
         
         return redirect()->route('employees.view');
