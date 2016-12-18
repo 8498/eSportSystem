@@ -21,20 +21,37 @@
                 <p>Numer mieszkania: {{ $vars->employee->personalDetail->address->apartment_number }}</p>
             </div>
             <div class="col-md-4">
-                <h4>Gry</h4>
-                @foreach($vars->games as $playerGame)
-                    <form method="post" action="{{ route('players.remove-game') }}">
-                    {{ csrf_field() }}
-                        {{ $playerGame->name }}
-                        <input name="player_id" type="hidden" value="{{ $vars->id }}">
-                        <input name="game_id" type="hidden" value="{{ $playerGame->id }}">
-                        <button type="submit" class="btn btn-danger">Usuń</button>
-                    </form>
-                @endforeach
-                <a class="btn btn-info" href="#" data-toggle="modal" data-target="#add-game-modal">Dodaj</a>
+                <div>
+                    <h4>Gry</h4>
+                    @foreach($vars->games as $playerGame)
+                        <form method="post" action="{{ route('players.remove-game') }}">
+                        {{ csrf_field() }}
+                            {{ $playerGame->name }}
+                            <input name="player_id" type="hidden" value="{{ $vars->id }}">
+                            <input name="game_id" type="hidden" value="{{ $playerGame->id }}">
+                            <button type="submit" class="btn btn-danger">Usuń</button>
+                        </form>
+                    @endforeach
+                    <a class="btn btn-info" href="#" data-toggle="modal" data-target="#add-game-player-modal">Dodaj</a>
+                </div>
+
+                <div>
+                    <h4>Druzyny</h4>
+                    @foreach($vars->teams as $playerTeam)
+                        <form method="post" action="{{ route('players.remove-team') }}">
+                        {{ csrf_field() }}
+                            {{ $playerTeam->tag }}
+                            <input name="player_id" type="hidden" value="{{ $vars->id }}">
+                            <input name="team_id" type="hidden" value="{{ $playerTeam->id }}">
+                            <button type="submit" class="btn btn-danger">Usuń</button>
+                        </form>
+                    @endforeach
+                    <a class="btn btn-info" href="#" data-toggle="modal" data-target="#add-team-player-modal">Dodaj</a>
+                </div>
             </div>
         </div>
     </div>
 
+    @include('teammanagement::modals.add-team-player-modal')
     @include('teammanagement::modals.add-game-player-modal')
 @endsection

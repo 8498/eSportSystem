@@ -18,6 +18,10 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
        View::composer('teammanagement::modals.add-game-player-modal', 'App\ViewComposers\GameComposer');
+
+       View::composer('teammanagement::modals.add-game-team-modal', 'App\ViewComposers\GameComposer');
+
+       View::composer('teammanagement::modals.add-team-player-modal', 'App\ViewComposers\TeamComposer');
     }
 
     /**

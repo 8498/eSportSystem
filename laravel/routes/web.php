@@ -13,6 +13,10 @@
 
 Route::get('/', ['as' => 'welcome', 'uses' => 'PageController@welcome']);
 
+
+
+// @TODO - replace ajax route
+
 //Ajax
 Route::get('/getroles', ['uses' => 'RoleController@ajaxGetAll']);
 

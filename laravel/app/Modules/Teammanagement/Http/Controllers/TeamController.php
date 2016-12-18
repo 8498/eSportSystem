@@ -31,10 +31,7 @@ class TeamController extends Controller
 
     public function show($id)
     {
-        $vars = [ 
-            'team' => $this->teamManager->getById($id), 
-            'games' => $this->gameManager->getAll()
-        ];
+        $vars = $this->teamManager->getById($id);
 
         return view('teammanagement::teams.show')->with('vars', $vars);
     }

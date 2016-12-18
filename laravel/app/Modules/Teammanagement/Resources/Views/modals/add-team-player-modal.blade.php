@@ -1,18 +1,18 @@
-<div id="add-game-team-modal" class="modal fade" tabindex="-1" role="dialog">
+<div id="add-team-player-modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">{{ ('Przypisz gre') }}</h4>
+                <h4 class="modal-title">{{ ('Przypisz drużyne') }}</h4>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('teams.add-game') }}" class="form-inline">
+                <form method="post" action="{{ route('players.add-team') }}" class="form-inline">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <input name="team_id" type="hidden" class="form-control" value="{{ $vars->id }}">
-                    <select name="game_id" class="form-control">
-                        @foreach($games as $game)
-                            <option value="{{ $game->id }}">{{ $game->name }}</option>
+                    <input name="player_id" type="hidden" class="form-control" value="{{ $vars->id }}">
+                    <select name="team_id" class="form-control">
+                        @foreach($teams as $team)
+                            <option value="{{ $team->id }}">{{ $team->tag }}</option>
                         @endforeach
                     </select>
                     <button type="submit" class="btn btn-success">Dodaj</button>

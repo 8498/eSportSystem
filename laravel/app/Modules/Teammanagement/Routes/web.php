@@ -50,6 +50,9 @@ Route::group(['prefix' => 'teammanagement', 'middleware' => ['auth', 'role'], 'r
         
         Route::post('/addGame', ['as' => 'players.add-game', 'uses' => 'PlayerController@addGame']);
         Route::post('/removeGame', ['as' => 'players.remove-game', 'uses' => 'PlayerController@removeGame']);
+
+        Route::post('/addTeam', ['as' => 'players.add-team', 'uses' => 'PlayerController@addToTeam']);
+        Route::post('/removeTeam', ['as' => 'players.remove-team', 'uses' => 'PlayerController@removeFromTeam']);
     });
 
 });

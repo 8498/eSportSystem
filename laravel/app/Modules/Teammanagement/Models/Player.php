@@ -24,6 +24,11 @@ class Player extends Model
         return $this->belongsToMany('App\Modules\Teammanagement\Models\Game');
     }
 
+    public function teams()
+    {
+        return $this->belongsToMany('App\Modules\Teammanagement\Models\Team');
+    }
+
     // << relationship
 
     public function getById($id)
