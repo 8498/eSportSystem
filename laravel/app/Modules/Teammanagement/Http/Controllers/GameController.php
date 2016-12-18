@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Modules\Teammanagement\Facades\GameManager;
+use App\Modules\Teammanagement\Http\Requests\GameRequest;
 
 class GameController extends Controller
 {
@@ -23,7 +24,7 @@ class GameController extends Controller
         return view('teammanagement::games.index')->with('vars', $vars);
     }
 
-    public function create(Request $request)
+    public function create(GameRequest $request)
     {
         if($this->gameManager->create($request->all()))
         {
@@ -38,7 +39,7 @@ class GameController extends Controller
         return view('teammanagement::games.edit')->with('vars', $vars);
     }
 
-    public function update(Request $request)
+    public function update(GameRequest $request)
     {
         $this->gameManager->update($request->all());
         

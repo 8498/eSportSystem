@@ -11,6 +11,8 @@ use App\Modules\Teammanagement\Facades\TeamManager;
 use App\Modules\Teammanagement\Facades\TeamGameManager;
 use App\Modules\Teammanagement\Facades\GameManager;
 
+use App\Modules\Teammanagement\Http\Requests\TeamRequest;
+
 class TeamController extends Controller
 {
     public function __construct(TeamManager $teamManager, TeamGameManager $teamGameManager, GameManager $gameManager)
@@ -37,7 +39,7 @@ class TeamController extends Controller
         return view('teammanagement::teams.show')->with('vars', $vars);
     }
 
-    public function create(Request $request)
+    public function create(TeamRequest $request)
     {
         if($this->teamManager->create($request->all()))
         {
@@ -52,7 +54,7 @@ class TeamController extends Controller
         return view('teammanagement::teams.edit')->with('vars', $vars);
     }
 
-    public function update(Request $request)
+    public function update(TeamRequest $request)
     {
         $this->teamManager->update($request->all());
 

@@ -11,6 +11,9 @@ use App\Modules\Teammanagement\Facades\PlayerManager;
 use App\Modules\Teammanagement\Facades\DeletePlayerManager;
 use App\Modules\Teammanagement\Facades\PlayerGameManager;
 
+use App\Modules\Teammanagement\Http\Requests\CreatePlayerRequest;
+use App\Modules\Teammanagement\Http\Requests\PlayerRequest;
+
 class PlayerController extends Controller
 {
     public function __construct(PlayerManager $playerManager, DeletePlayerManager $deletePlayerManager, PlayerGameManager $playerGameManager)
@@ -34,7 +37,7 @@ class PlayerController extends Controller
         return view('teammanagement::players.show')->with('vars', $vars);
     }
 
-    public function create(Request $request)
+    public function create(CreatePlayerRequest $request)
     {
         if ($this->playerManager->create($request->all())) {
             return redirect()->back();
@@ -48,7 +51,7 @@ class PlayerController extends Controller
         return view('teammanagement::players.edit')->with('vars', $vars);
     }
 
-    public function update(Request $request)
+    public function update(PlayerRequest $request)
     {
         $this->playerManager->update($request->all());
 
