@@ -6,19 +6,28 @@
         <div class="panel-heading">{{ $vars->employee->firstname }} {{ $vars->employee->lastname }}</div>
         <div class="panel-body">
             <div class="col-md-8">
-                <p>Nick: {{ $vars->playerDetail->nickname }}</p>
-                <p>Data ur: {{ $vars->employee->personalDetail->birthday }}</p>
-                <p>Numer tel: {{ $vars->employee->personalDetail->phone_number }}</p>
-                <p>Numer dowodu: {{ $vars->employee->personalDetail->card_number }}</p>
-                <p>Narodowość: {{ $vars->employee->personalDetail->nationality->nationality_name }}</p>
-                <h2>Adres</h2>
-                <p>Kraj: {{ $vars->employee->personalDetail->address->city->country }}</p>
-                <p>Województwo: {{ $vars->employee->personalDetail->address->city->state }}</p>
-                <p>Miasto: {{ $vars->employee->personalDetail->address->city->city_name }}</p>
-                <p>Kod pocztowy: {{ $vars->employee->personalDetail->address->city->postal_code }}</p>
-                <p>Ulica: {{ $vars->employee->personalDetail->address->street_name }}</p>
-                <p>Numer domu: {{ $vars->employee->personalDetail->address->house_number }}</p>
-                <p>Numer mieszkania: {{ $vars->employee->personalDetail->address->apartment_number }}</p>
+                <div>
+                    <p>Nick: {{ $vars->playerDetail->nickname }}</p>
+                    <p>Data ur: {{ $vars->employee->personalDetail->birthday }}</p>
+                    <p>Numer tel: {{ $vars->employee->personalDetail->phone_number }}</p>
+                    <p>Numer dowodu: {{ $vars->employee->personalDetail->card_number }}</p>
+                    <p>Narodowość: {{ $vars->employee->personalDetail->nationality->nationality_name }}</p>
+                    <h2>Adres</h2>
+                    <p>Kraj: {{ $vars->employee->personalDetail->address->city->country }}</p>
+                    <p>Województwo: {{ $vars->employee->personalDetail->address->city->state }}</p>
+                    <p>Miasto: {{ $vars->employee->personalDetail->address->city->city_name }}</p>
+                    <p>Kod pocztowy: {{ $vars->employee->personalDetail->address->city->postal_code }}</p>
+                    <p>Ulica: {{ $vars->employee->personalDetail->address->street_name }}</p>
+                    <p>Numer domu: {{ $vars->employee->personalDetail->address->house_number }}</p>
+                    <p>Numer mieszkania: {{ $vars->employee->personalDetail->address->apartment_number }}</p>
+                </div>
+                <div>
+                    @if($vars->status == 'player')
+                        <a class="btn btn-warning" href="{{ route('players.set-as-candidate', $vars->id) }}">Ustaw jako Kandydat</a>
+                    @elseif($vars->status == 'candidate')
+                        <a class="btn btn-success" href="{{ route('players.set-as-player', $vars->id) }}">Ustaw jako Gracz</a>
+                    @endif
+                </div>
             </div>
             <div class="col-md-4">
                 <div>

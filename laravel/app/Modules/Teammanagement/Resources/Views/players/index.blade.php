@@ -31,9 +31,11 @@
                 @endforeach
                 </tbody>
             </table>
-            <a class="btn btn-success" href="#" data-toggle="modal" data-target="#create-player-modal">Dodaj</a>
+            <a class="btn btn-success" href="#" data-toggle="modal" data-target="<?php echo '#create-' . $status .  '-modal' ?>">Dodaj</a>
         </div>
     </section>
 
-    @include('teammanagement::modals.create-player-modal')
+    @include('teammanagement::modals.create-' . $status .'-modal')
+
+    
 @endsection

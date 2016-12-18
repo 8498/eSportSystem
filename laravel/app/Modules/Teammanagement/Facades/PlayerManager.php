@@ -20,9 +20,9 @@ class PlayerManager
         return $this->player->getById($id);
     }
 
-    public function getAll()
+    public function getAll($status)
     {
-        return $this->player->getAll();
+        return $this->player->getAll()->where('status', $status);
     }
 
     public function create($array)
@@ -46,5 +46,15 @@ class PlayerManager
     public function delete($id)
     {
         $this->player->del($id);
+    }
+
+    public function setStatusPlayer($id)
+    {
+        $this->player->changeStatus($id, 'player');
+    }
+
+    public function setStatusCandidate($id)
+    {
+        $this->player->changeStatus($id, 'candidate');
     }
 }

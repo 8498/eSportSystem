@@ -1,14 +1,14 @@
-<div id="create-player-modal" class="modal fade" tabindex="-1" role="dialog">
+<div id="create-candidate-modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">{{ ('Dodaj gracza') }}</h4>
+                <h4 class="modal-title">{{ ('Dodaj kandydata') }}</h4>
             </div>
             <div class="modal-body">
                 <form method="post" action="{{ route('players.create') }}" class="form-horizontal">
                 {{ csrf_field() }}
-                    <input type="hidden" name="status" value="{{ ('player') }}">
+                    <input type="hidden" name="status" value="{{ ('candidate') }}">
                     <input type="hidden" name="office" value="{{ App\Modules\Administration\Models\Office::getPlayer()->id }}">
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">

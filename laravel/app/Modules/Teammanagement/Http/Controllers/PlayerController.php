@@ -25,11 +25,11 @@ class PlayerController extends Controller
         $this->playerTeamManager = $playerTeamManager;
     }
 
-    public function view()
+    public function view($status)
     {
-        $vars = $this->playerManager->getAll();
+        $vars = $this->playerManager->getAll($status);
 
-        return view('teammanagement::players.index')->with('vars', $vars);
+        return view('teammanagement::players.index')->with(['vars' => $vars, 'status' => $status]);
     }
 
     public function show($id)
@@ -57,7 +57,7 @@ class PlayerController extends Controller
     {
         $this->playerManager->update($request->all());
 
-        return redirect()->route('players.view');
+        return redirect()->route('dashboard');
     }
 
     public function delete($id)
@@ -66,7 +66,7 @@ class PlayerController extends Controller
 
         $this->deletePlayerManager->delete($array);
         
-        return redirect()->route('players.view');
+        return redirect()->route('dashboard');
     }
 
     public function addGame(Request $request)
@@ -103,5 +103,19 @@ class PlayerController extends Controller
         $this->playerTeamManager->removeTeamFromPlayer($array);
 
         return redirect()->back();
-    }   
+    }  
+
+    public function changeStatusToPlayer($id)
+    {
+        $this->playerManager->setStatusPlayer($id);
+
+        return redirect()->route('dashboard');
+    } 
+
+    public function changeStatusToCandidate($id)
+    {
+        $this->playerManager->setStatusCandidate($id);
+
+        return redirect()->route('dashboard');
+    } 
 }

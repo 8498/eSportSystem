@@ -5,7 +5,10 @@ namespace App\Modules\Teammanagement\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Player extends Model
-{
+{   
+    protected $fillable = [
+        'status'
+    ];
 
     // << relationship
 
@@ -49,6 +52,7 @@ class Player extends Model
 
         $player->employee_id = $array['employee_id'];
         $player->player_detail_id = $array['player_detail_id'];
+        $player->status = $array['status'];
         $player->save();
 
         return $player;
@@ -65,10 +69,28 @@ class Player extends Model
 
     public function del($id)
     {
-        $player = $this->getById($id);
+        $player = $this::find($id);
 
         $player->delete();
 
         return true;
+    }
+
+    public function getStatus($id)
+    {
+        $player = $this::find($id);
+
+        $status = $player->status;
+
+        return $status;
+    }
+
+    public function changeStatus($id, $status)
+    {
+        $player = $this::find($id);
+
+        $player->update([
+            'status' => $status
+        ]);
     }
 }

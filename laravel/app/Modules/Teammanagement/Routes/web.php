@@ -39,7 +39,8 @@ Route::group(['prefix' => 'teammanagement', 'middleware' => ['auth', 'role'], 'r
     });
 
     Route::group(['prefix' => 'players'], function() {
-        Route::get('/', ['as' => 'players.view', 'uses' => 'PlayerController@view']);
+        Route::get('/{status}', ['as' => 'players.view', 'uses' => 'PlayerController@view']);
+        
         Route::get('/show/{id}', ['as' => 'players.show', 'uses' => 'PlayerController@show']);
 
         Route::get('/edit/{id}', ['as' => 'players.edit', 'uses' => 'PlayerController@edit']);
@@ -53,6 +54,9 @@ Route::group(['prefix' => 'teammanagement', 'middleware' => ['auth', 'role'], 'r
 
         Route::post('/addTeam', ['as' => 'players.add-team', 'uses' => 'PlayerController@addToTeam']);
         Route::post('/removeTeam', ['as' => 'players.remove-team', 'uses' => 'PlayerController@removeFromTeam']);
+
+        Route::get('/setAsPlayer/{id}', ['as' => 'players.set-as-player', 'uses' => 'PlayerController@changeStatusToPlayer']);
+        Route::get('/setAsCandidate/{id}', ['as' => 'players.set-as-candidate', 'uses' => 'PlayerController@changeStatusToCandidate']);
     });
 
 });
